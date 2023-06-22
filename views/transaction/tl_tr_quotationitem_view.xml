@@ -1,0 +1,202 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START QUOTATION ITEM%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course --> 
+    <record id="tl_tr_quotationitem_multitrip_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.quotationitem.multitrip.tree</field>
+        <field name="model">tl.tr.quotationitem.multitrip</field>
+        <field name="arch" type="xml">
+            <tree string="quotationiteme List">   
+                <header>
+                    <button name="cekdefaultfilter" string="dev: click to add default groupby" class="oe_highlight" type="object"/>
+                </header> 
+                <field name="sequenceview"/>    
+                <field name="locationfrom"/>    
+                <field name="loadtype"/>     
+                <field name="item_load"/>      
+                <field name="item_unload"/>  
+                <field name="quotationitemid"/>      
+            </tree>
+        </field> 
+    </record>   
+    <record id="tl_tr_quotationitem_multitrip_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.quotationitem.multitrip.form</field>
+        <field name="model">tl.tr.quotationitem.multitrip</field>
+        <field name="type">form</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml"> 
+            <form string="quotationitem Form"> 
+                <sheet>  
+                    <group  col="4" colspan="4">     
+                        <field name="locationfrom" string="lokasi tujuan"/>  
+                        <field name="loadtype"/>    
+                        <field name="item_load"     force_save="1" attrs="{'invisible':[('loadtype', '==', False)], 'readonly': ['|', ('loadtype', '==', 'DU'), ('loadtype', '==', 'BONGKAR' )] }" /> 
+                        <field name="item_unload"   force_save="1" attrs="{'invisible':[('loadtype', '==', False)], 'readonly': ['|', ('loadtype', '==', 'DU'), ('loadtype', '==', 'MUAT'    )] }" />   
+                    </group>   
+                    <group  col="4" colspan="4">      
+                        <field name="locationfromlatitude"  widget="char" attrs="{'readonly':True, 'pattern': '^[0-9+-.]+$'}"/> 
+                        <field name="locationfromlongitude" widget="char" attrs="{'readonly':True, 'pattern': '^[0-9+-.]+$'}"/> 
+                    </group>   
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="tl_tr_quotationitem_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.quotationitem.tree</field>
+        <field name="model">tl.tr.quotationitem</field>
+        <field name="arch" type="xml">
+            <tree string="quotationiteme List"> 
+                <header>
+                    <button name="cekdefaultfilter" string="dev: click to add default groupby" class="oe_highlight" type="object"/>
+                </header>
+                <field name="quotationitemid"/>   
+                <field name="customerid"/>   
+                <field name="stage"/> 
+                <field name="brandcategory"/>   
+                <field name="brand"/>   
+                <field name="M2O_locationfrom"/>   
+                <field name="M2O_locationto"/>   
+                <field name="cost"/>  
+                <field name="salesprice"/>  
+                <field name="discount"/>  
+                <field name="salespriceafterdiscount"/>  
+                <field name="wayoftransport"/> 
+                <field name="usingferries"/>    
+            </tree>
+        </field> 
+    </record>   
+     
+    <!-- Membuat View Form Course --> 
+    <record id="tl_tr_quotationitem_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.quotationitem.form</field>
+        <field name="model">tl.tr.quotationitem</field>
+        <field name="type">form</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml"> 
+            <form string="quotationitem Form">
+                <header>
+                    <field name="stage" widget="statusbar"/>
+                </header>
+                <sheet>  
+                    <group  col="4" colspan="4">  
+                       <!--  <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/> ini kalo disable aftersave -->
+                        <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/>  
+                        <field name="quotationitemid"/>
+                        <field name="jenistransaksi"        /> 
+                        <field name="ismultitrip"           attrs="{'readonly' : True }" force_save="1"/> 
+                        <field name="jenisbaranglogistic"   attrs="{'invisible': [('jenistransaksi', '!=', 'LOG')] }"/> 
+                        <field name="jenisbarangDU"         attrs="{'invisible': [('jenistransaksi', '!=', 'DU' )] }"/>  
+                        <field name="M2O_brand"             attrs="{'invisible': [('jenistransaksi', '!=', 'DU' )] }"/>    
+                        <field name="brandcategory"         attrs="{'invisible': [('jenistransaksi', '!=', 'DU' )],'readonly': True}"/>   
+                        <field name="wayoftransport"        />   
+                        <field name="usingferries"          />  
+                        <field name="jenisunit"           attrs="{'invisible': ['|',('ismultitrip',   '==', False),('jenistransaksi', '!=', 'LOG')] }"     />    
+                        <field name="pilihtrip"            attrs="{'readonly': [('id', '!=', False)]}" />    
+                        <!-- <field name="pilihtrip" />     -->
+                        
+                    </group>   
+                <!-- attrs="{'|','invisible': [('pilihtrip',   '==', 'SINGLE'),('pilihtrip',   '==', '')] }" --> 
+                    <group  col="4" colspan="4" >    
+                        <notebook>
+                            <page string="From"  >  
+                                <group  col="4" colspan="4" class="quot_page_green" >    
+                                    <field name="M2O_locationfrom"   force_save="1" string="Location From(start)"/> 
+                                    <field name="sgl_loadtype_fr"    attrs="{'readonly' : [('jenistransaksi',   '!=', 'LOG')] }"/>  
+                                    <field name="sgl_item_load_fr"   attrs="{'readonly' : ['|' ,('jenistransaksi' ,   '!=', 'LOG'        ),  
+                                                                                                ('sgl_loadtype_fr',   '!=', 'MUAT'       ),  
+                                                                                                ('sgl_loadtype_fr',   '!=', 'BONGKARMUAT')  ] }"/> 
+                                    <field name="sgl_item_unload_fr" attrs="{'readonly' : ['|' ,('jenistransaksi' ,   '!=', 'LOG'        ),  
+                                                                                                ('sgl_loadtype_fr',   '!=', 'BONGKAR'    ),
+                                                                                                ('sgl_loadtype_fr',   '!=', 'BONGKARMUAT')  ] }"/> 
+                                </group> 
+                            </page> 
+                            <page string="middle"  attrs="{'invisible': [('pilihtrip',   '!=', 'MULTI')] }">   
+                                <group  col="4" colspan="4" class="quot_page_blue" >    
+                                    <field name="dropA_M2O_location"     force_save="1" string="location drop A"/>  
+                                    <field name="dropA_sgl_loadtype"    attrs="{'readonly' : [('jenistransaksi',   '!=', 'LOG')] }"/>  
+                                    <field name="dropA_sgl_item_load"   attrs="{'readonly' : ['|' ,('jenistransaksi' ,   '!=', 'LOG'        ),  
+                                                                                                ('sgl_loadtype_fr',   '!=', 'MUAT'       ),  
+                                                                                                ('sgl_loadtype_fr',   '!=', 'BONGKARMUAT')  ] }"/> 
+                                    <field name="dropA_sgl_item_unload" attrs="{'readonly' : ['|' ,('jenistransaksi' ,   '!=', 'LOG'        ),  
+                                                                                                ('sgl_loadtype_fr',   '!=', 'BONGKAR'    ),
+                                                                                                ('sgl_loadtype_fr',   '!=', 'BONGKARMUAT')  ] }"/> 
+                                </group> 
+                            </page> 
+                            <page string="To"  >  
+                                <group  col="4" colspan="4" class="quot_page_red" >    
+                                    <field name="M2O_locationto"     force_save="1" string="Location To(End)"/>  
+                                    <!-- <field name="locationto"/>  -->
+                                    <field name="sgl_loadtype_to"    attrs="{'readonly' : [('jenistransaksi',   '!=', 'LOG')] }"/> 
+                                    <field name="sgl_item_load_to"   attrs="{'readonly' : ['|' ,('jenistransaksi' ,   '!=', 'LOG'        ),  
+                                                                                                ('sgl_loadtype_to',   '!=', 'MUAT'       ),  
+                                                                                                ('sgl_loadtype_to',   '!=', 'BONGKARMUAT')  ] }"/> 
+                                    <field name="sgl_item_unload_to" attrs="{'readonly' : ['|' ,('jenistransaksi' ,   '!=', 'LOG'        ),  
+                                                                                                ('sgl_loadtype_to',   '!=', 'BONGKAR'    ),
+                                                                                                ('sgl_loadtype_to',   '!=', 'BONGKARMUAT')  ] }"/>  
+                                </group>
+
+                            </page> 
+                        </notebook>
+                    </group>         
+                    <group> 
+                        <field name="multitrip" string="multi drop" widget="many2many" attrs="{'readonly': [True]}" force_save="1">  
+                        <!-- <field name="multitrip" widget="many2many" attrs="{'invisible': [('ismultitriptoggle',   '==', False)],'readonly': True }"  force_save="1">   -->
+                            <tree string="String">     
+                                <field name="sequence" widget="handle"/>   
+                                <field name="sequenceview" string="no"/>   
+                                <field name="locationfrom"/> 
+                                <field name="loadtype"/>    
+                                <field name="item_load"/>      
+                                <field name="item_unload"/>  
+                                <field name="quotationitemid" string="qid"/>      
+                                <!-- <button name="messageshow" string="up" class="btn-danger" type="object"/> -->
+                            </tree>  
+                        </field>
+                    </group>  
+                    
+                    <group  col="4" colspan="4">  
+                        <!-- <field name="M2O_locationfrom" attrs="{'readonly': True }" force_save="1" string="Location From(start)"/>   
+                        <field name="M2O_locationto"   attrs="{'readonly': True }" force_save="1" string="Location To(End)"/>   -->
+                        <field name="cost" string="cost"/>   
+                        <field name="salesprice"/>   
+                        <field name="discount"/>      
+                        <field name="salespriceafterdiscount"/>    
+                        <!-- <field name="quotationid" class="readonlytextbox" />     -->
+                    </group>   
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_quotationitem_action" model="ir.actions.act_window">
+        <field name="name">quotationitem</field> 
+        <!-- <field name="domain">[('iscorrectcust', '=',  True),('quotationid', '=',  False)]</field> -->
+        <field name="res_model">tl.tr.quotationitem</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data quotationitem pertamamu ...
+            </p>
+        </field>
+    </record>
+    <record id="tl_tr_quotationitem_formonly_action" model="ir.actions.act_window">
+        <field name="name">quotationitem</field>
+        <field name="target">new</field>  
+        <field name="res_model">tl.tr.quotationitem</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data quotationitem pertamamu ...
+            </p>
+        </field>
+    </record>
+        
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END QUOTATION ITEM%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

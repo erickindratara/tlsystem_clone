@@ -1,0 +1,109 @@
+<odoo>
+  <data> 
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START WORKORDER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course -->
+ 
+    <record id="tl_tr_workorder_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.workorder.tree</field>
+        <field name="model">tl.tr.workorder</field>
+        <field name="arch" type="xml">
+            <tree string="list"> 
+                <field name="woid"/>   
+                <field name="stage" widget="badge" decoration-success="stage == 'RTI'" decoration-danger="stage in('CAN','CWO')" decoration-info="stage in ('NEW','DIW')"/>   
+                <field name="wodate"/>
+                <field name="totalCost"/> 
+                <field name="totalSalesPrice"/>
+                <field name="pullback"  widget="badge" attrs="{'invisible': [('pullbackable', '=', False)]}"/>
+                <field name="pullbackable" attrs="{'column_invisible': [(True)]}"/>
+                <button name='print_bonputih' type='object' attrs="{'invisible': [('stage', '!=', 'DIC')]}" class='btn-primary' string='print BonPutih'  />  
+                <button name="action_confirmready" string="Ready To Invoice" attrs="{'invisible': ['|',('stage', '!=', ('CAA')),('totalSalesPrice','=','0')]}" confirm="yakin mau lakukan ini?" class="btn-primary" type="object"/>
+                <!-- <button name="action_confirmready" string="Ready To Invoice" attrs="{'invisible': ['|', ('stage', '!=', 'NEW'), ('stage', '!=', 'DIW')]}" confirm="yakin mau pencet tombol ini?" class="btn-primary" type="object"/> -->
+                <!-- <button name="action_confirmpullbackdummy" string="Pullback from Invoice" attrs="{'invisible': [('pullbackable', '=', False)]}" confirm="yakin mau pencet tombol ini?" class="btn-danger" type="object"/> -->
+                <button name="action_confirmcancel" string="cancel" attrs="{'invisible': [('stage', 'in', ('RTI','CWO','semua status di invoice'))]}"  confirm="yakin mau pencet tombol ini?" class="btn-danger" type="object"/>
+                <button name="action_confirmrevertdraft" string="revert to draft" attrs="{'invisible': [('stage', '!=', 'CWO')]}"  confirm="yakin mau pencet tombol ini?" class="btn-primary" type="object"/>
+            </tree>
+        </field>
+    </record>
+       
+    <!-- Membuat View Form Course -->
+    <record id="tl_tr_workorder_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.workorder.form</field>
+        <field name="model">tl.tr.workorder</field>
+        <field name="arch" type="xml">
+            <form string="People Form">
+                <header> 
+                    <field name="stage" widget="statusbar"  />   
+                    <button name="action_confirmpullback" string="Pullback from Invoice" attrs="{'invisible': [('pullbackable', '=', False)]}" confirm="yakin mau pencet tombol ini?" class="btn-danger" type="object"/>
+                
+                </header>
+                <sheet>
+                    <group  col="4" colspan="4">  
+                        <field name="customerid" widget="selection"  attrs="{'readonly': [('id', '!=', False)]}" />  
+                        <field name="woid"/>         
+                        <field name="wodate"/> 
+                        <field name="custinitial" attrs="{'invisible': True}"/>
+                        <field name="pullbackable" attrs="{'invisible': True}"/>
+                    </group> 
+                    <notebook> 
+                        <page string="__">
+                            <group>  
+                                <div>
+                                    <field name="draftwo" widget="many2many" attrs="{'readonly': [('stage', 'not in', ('NEW','DIW'))]}" >
+                                        <tree string="String">  
+                                            <field name="dwoid"/>  
+                                            <field name="wono"/>   
+                                            <field name="stage" widget="html"/>    
+                                            <field name="triptype"/>    
+                                            <field name="qi_locationfrom"/> 
+                                            <field name="qi_dropA_location"/> 
+                                            <field name="qi_locationto"/>       
+                                            <field name="drafttype"/>          
+                                            <field name="driverid"/>      
+                                            <field name="chassisno"/>      
+                                            <field name="qi_wayoftransport"/>
+                                            <field name="qi_usingferries"/>      
+                                        </tree>  
+                                    </field>
+                                    <!-- <field name="draftwo" domain="[('iscorrectcust', '=',  True),('wono', '=', False)]"/>     -->
+                                </div> 
+                            </group>
+                            <group col="8">     
+                                    <field name="dummy" style="width: 90 %%"/>   
+                                    <field name="dummy" style="width: 90 %%"/>  
+                                    <field name="dummy" style="width: 90 %%"/>  
+                                    <field name="totalSalesPrice" width="200"/>  
+                                    <field name="dummy" style="width: 90 %%"/>  
+                                    <field name="dummy" style="width: 90 %%"/>  
+                                    <field name="dummy" style="width: 90 %%"/>  
+                                    <field name="totalCost" width="200"/>  
+                            </group>
+                            <group col="8">   
+                                <div class="alignright">
+                                <button name="action_confirmreadytoclaim" string="ready To claim" attrs="{'invisible': ['|',('stage', '!=', ('DIW')),('totalSalesPrice','=','0')]}" confirm="yakin mau lakukan ini?" class="btn-primary" type="object"/>
+                
+                                </div>  
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_workorder_action" model="ir.actions.act_window">
+        <field name="name">Sales Order</field> 
+        <field name="res_model">tl.tr.workorder</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Imput data Sales Order pertamamu ...
+            </p>
+        </field>
+    </record>
+
+    
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END WORKORDER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

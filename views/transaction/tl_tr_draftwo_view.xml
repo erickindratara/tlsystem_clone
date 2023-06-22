@@ -1,0 +1,296 @@
+<odoo>
+  <data>  
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START DRAFT WO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course -->  
+
+    <record id="tl_tr_draftwomultitrip_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.draftwomultitrip.tree</field>
+        <field name="model">tl.tr.draftwomultitrip</field>  
+        <field name="arch" type="xml"> 
+            <tree string="WO multitrip List">       
+                <field name="dwoid"/>         
+                <field name="dwo_sequence"/>        
+                <field name="dwo_locationfrom"/>        
+                <field name="dwo_loadtype"/>        
+                <field name="dwo_item_load"/>        
+                <field name="dwo_item_unload"/>     
+                <field name="loadtime"/>        
+                <field name="unloadtime"/>        
+                <field name="dwo_latitude"/>        
+                <field name="dwo_longitude"/>        
+                <field name="dwo_alamat"/>         
+                 
+            </tree>  
+        </field> 
+    </record> 
+    <record id="tl_tr_draftwomultitrip_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.draftwomultitrip.form</field>
+        <field name="model">tl.tr.draftwomultitrip</field>
+        <field name="arch" type="xml">
+            <form string="People Form"> 
+                <sheet>
+                    <group  col="4" colspan="4">           
+                        <field name="dwoid"             attrs="{'readonly': True}"/>           
+                        <field name="dwo_sequence"      attrs="{'readonly': True}"/>     
+                        <field name="dwo_locationfrom"  attrs="{'readonly': True}"/>         
+                        <field name="dwo_loadtype"      attrs="{'readonly': True}"/>     
+                        <field name="dwo_item_load"     attrs="{'readonly': True}"/>     
+                        <field name="dwo_item_unload"   attrs="{'readonly': True}"/>     
+                        <field name="loadtime"          />     
+                        <field name="unloadtime"        />     
+                        <field name="dwo_latitude"/>        
+                        <field name="dwo_longitude"/>        
+                        <field name="dwo_alamat"/>         
+                    </group>  
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="tl_tr_draftwo_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.draftwo.tree</field>
+        <field name="model">tl.tr.draftwo</field>  
+        <field name="arch" type="xml"> 
+            <tree string="WO List">    
+                <header>
+                    <button name="cekdefaultfilter" string="dev: click to add default groupby" class="oe_highlight" type="object"/>
+                </header>
+                <field name="dwoid"/>     
+                <field name="triptype"/>        
+                <field name="dwodate"/>        
+                <field name="senddate"/>       
+                <field name="drafttype"/>      
+                <field name="donumber"/>      
+                <field name="spe_number"/>     
+                <field name="activestage"/>       
+                <field name="stage"/>       
+                <button name="reactivate"  attrs="{'invisible': [('activestage', 'in', ('ACT','CLS'))]}" string='re-Activate' confirm="yakin?" class='btn-danger' type="object"/>  
+                <button name="revertdraft"  attrs="{'invisible': [('activestage', 'in', ('ACT','CLS'))]}" string='revert to draft' confirm="yakin?" class='btn-primary' type="object"/>  
+                
+                <!-- <button name="rtc"  string='rtc'   class='btn-primary' type="object"/>   -->
+                
+                <field name="additionalinfo"/>      
+                <field name="qi_salesprice" widget="float_field_no_grouping" />
+                <field name="qi_discount"                   force_save="1"/> 
+                <field name="qi_salespriceafterdiscount"    force_save="1"/>   
+                <field name="driverid"/>      
+                <field name="rp_alias"/>      
+                <field name="qi_wayoftransport"     force_save="1"/> 
+                <field name="qi_usingferries"       force_save="1"/>  
+                <!-- <button name="revertdraft"  attrs="{'invisible': ['|',('activestage', 'not in', ('CWO','CIV','CDR')),('stage', 'in', ('DIW','RTC'))]}"  string='revert to draft' confirm="yakin?" class='btn-primary' type="object"/>   -->
+                <field name="wono"/>        
+                <field name="invoiceno"/>  
+                <field name="claimid"/>        
+                 
+            </tree>  
+        </field> 
+    </record>
+        
+    
+    <record id="tl_tr_draftwo_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.draftwo.form</field>
+        <field name="model">tl.tr.draftwo</field>
+        <field name="arch" type="xml">
+            <form string="People Form">
+                <sheet>
+                    <notebook> 
+                        <page string="header"> 
+                            <group  col="4" colspan="4" >  
+                                <field name="drafttype"         attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>       
+                                <field name="customerid"        attrs="{'readonly': ['&amp;', ('dwoid', '!=', False),('dwoid', '!=', '/')]}"  widget="selection" /><!--ini klo mau full readonly-->
+                                <field name="custinitial"       attrs="{'invisible': True}"/>     
+                                <field name="dwodate"           attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>      
+                            </group>  
+                            <group  col="4" colspan="4"  class="dwo_deliveryunit" attrs="{'invisible': [('drafttype', '!=', 'DESTINATION') ] }">    
+                                <field name="donumber"          attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>         
+                                <field name="msadditionalinfo"  attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}" string="msadditionalinfo"/> 
+                                <field name="triptype"          attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}" widget="selection"/>     
+                                <field name="korlap_id"      widget="selection" attrs="{'readonly': [('stage', 'not in',('NEW','DRF')),]}"/>  
+                                <field name="rp_korlapimage"    attrs="{'readonly': True, 'invisible': [('rp_korlapimage','=', False)]}" widget="image"  class="oe_avatar"/> 
+                                <field name="senddate"          attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>         
+                                <!-- <field name="delivereddate"     attrs="{'readonly': ['&amp;',('delivereddate','!=',False),('|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),)]}"/>           -->
+                                <field name="delivereddate"     />    
+                            </group> 
+                            <group  col="4" colspan="4" class="dwo_logistic" attrs="{'invisible': [('drafttype', '!=', 'DESTINATIONLOG') ] }">   
+                                <field name="wholesalename"     attrs="{'invisible': ['|',('customerid', '==', False),('drafttype', '!=', 'DESTINATIONLOG')] }"/> 
+                                <field name="donumber"          attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>         
+                                <field name="spe_number"        attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>          
+                                <field name="senddate"          attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>         
+                                <field name="korlap_id"     widget="selection"    attrs="{'readonly': [('stage', 'not in',('NEW','DRF')),]}"/>  
+                                <field name="rp_korlapimage"    attrs="{'readonly': True, 'invisible': [('rp_korlapimage','=', False)]}" widget="image"  class="oe_avatar"/> 
+                                <field name="delivereddate"    />    
+                            
+                            </group> 
+                            <group  col="4" colspan="4" class="dwo_other" attrs="{'invisible': [('drafttype', '!=', 'OTHER') ] }">  
+                                <field name="korlap_id"     widget="selection"    attrs="{'readonly': [('stage', 'not in',('NEW','DRF')),]}"/>  
+                            </group> 
+                        </page>    
+                        <page string="IDs">
+                            <group  col="4" colspan="4" >   
+                                <field name="dwoid"             attrs="{'readonly': True}"/>          
+                                <field name="wono"              attrs="{'readonly': True}"/>      
+                                <field name="invoiceno"         attrs="{'readonly': True}"/>      
+                                <field name="claimid"           attrs="{'readonly': True}"/>      
+                            </group> 
+                        </page>    
+                    </notebook> 
+                    <group  col="4" colspan="4"> 
+                        <notebook> 
+                            <page string="quotation">   
+                                <group col="8" colspan="8"> 
+                                    <field name="filterquotationbywayoftransport"  widget="radio" attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}" />       
+                                </group>
+                                <group  col="4"  attrs="{'invisible': [('drafttype','=', 'OTHER')]}">           
+                                    <table class="width100"> 
+                                        <tr class="box height35p">
+                                            <td class="padding3"  style="vertical-align:top" colspan="2">    
+                                                <!-- <field name="quotationitem" attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}" />  -->
+                                                <field name="quotationitem" /> 
+                                            </td>
+                                            <td class="padtd width50 paddingleft40"  style="vertical-align:top" colspan="2">  
+                                                <field name="quotationitemID"       force_save="1"/>     
+                                            </td>  
+                                        </tr> 
+                                    </table> 
+                                </group>              
+                                <group col="4" colspan="4"  attrs="{'invisible': [('drafttype','=', 'OTHER')]}">
+                                    <field name="qi_locationfrom"       force_save="1" attrs="{'readonly':True}"/>  
+                                    <field name="qi_dropA_location"     force_save="1" attrs="{'readonly':True, 'invisible': [('qi_trip','!=', 'MULTI')]}"/>  
+                                    <field name="qi_locationto"         force_save="1" attrs="{'readonly':True}"/> 
+                                </group>  
+                                <group  col="1" colspan="4" class="dwo_logistic"  attrs="{'invisible': [('drafttype','=', 'OTHER')]}">   
+                                    <div>
+                                        <field name="qi_multitrip" attrs="{'readonly':True}" force_save="1">   
+                                            <tree string="String">      
+                                                <field name="dwo_sequence"      /> 
+                                                <field name="dwo_locationfrom"  />    
+                                                <field name="dwo_loadtype"      />    
+                                                <field name="dwo_item_load"     />    
+                                                <field name="dwo_item_unload"   />     
+                                                <field name="dwo_latitude"/>        
+                                                <field name="dwo_longitude"/>        
+                                                <field name="dwo_alamat"/>       
+                                            </tree>  
+                                        </field>
+
+                                    </div> 
+                                </group>   
+                               
+                                <group col="4" colspan="4"  attrs="{'invisible': [('drafttype','=', 'OTHER')]}">       
+                                    <field name="qi_wayoftransport"     force_save="1" attrs="{'readonly':True}"/> 
+                                    <field name="qi_usingferries"       force_save="1" attrs="{'readonly':True}"/>   
+                                    <field name="qi_trip"               force_save="1" attrs="{'readonly':True}"/>  
+                                    <field name="qi_jenisbarang"        force_save="1" attrs="{'readonly':True}"/>  
+                                    <field name="qi_jenistransaksi"     force_save="1" attrs="{'readonly':True}"/> 
+                                    <field name="qi_jenisunit"          force_save="1" attrs="{'readonly':True}"/>   
+                                </group>      
+                                <group  string="data unit yang dikirim" col="4" colspan="4" attrs="{'invisible': [('drafttype','!=', 'DESTINATION')]}">
+                                            
+                                    <field name="qi_brandcategory"      force_save="1" attrs="{'readonly':True}"/>  
+                                    <field name="qi_brand"              force_save="1" attrs="{'readonly':True}"/>  
+                                    <field name="brandinfo"  />   
+                        
+                                    <field name="chassisno"      attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>  
+                                    <field name="engineno"       attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>  
+                                    <field name="licenseplate"   attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/> 
+                                    <field name="manfactureyear" attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/> 
+                                    <field name="color"          attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>  
+                                </group> 
+                                <group  string="data unit carrier/trucking/towing" col="4" colspan="4" attrs="{'invisible': ['|',('drafttype','not in', ('DESTINATIONLOG','DESTINATION')),('qi_wayoftransport','not in',('TRUCKING',  'TOWING','CARRIER' ))]}">
+                                    <field name="carrier_nopol"        attrs="{'readonly': [(True),]}"/>  
+                                    <field name="carrier_name"         attrs="{'readonly': ['|',('stage', 'not in',('NEW','DRF')),('dwoid','not in',(False,'/')),]}"/>   
+                                </group>
+                                <group col="4" colspan="4">       
+                                    <field name="salesdescription"           attrs="{'readonly': [('stage', 'not in',('NEW','DRF'))]}" force_save="1"/> 
+                                    <field name="qi_salesprice"              attrs="{'readonly': [('stage', 'not in',('NEW','DRF'))]}" class="font50px"  widget="monetary" force_save="1"/> 
+                                    <field name="qi_cost"                    attrs="{'readonly': [('stage', 'not in',('NEW','DRF'))]}" class="font50px"  widget="monetary" force_save="1"/> 
+                                    <field name="qi_discount"                attrs="{'readonly': [('stage', 'not in',('NEW','DRF'))]}" class="font50px"  widget="monetary" force_save="1"/> 
+                                    <field name="qi_salespriceafterdiscount" attrs="{'readonly': [('stage', 'not in',('NEW','DRF'))]}" class="font50px"  widget="monetary" force_save="1"/>  
+                                </group>    
+                            </page> 
+                            <page string="Driver info">     
+                                <group  col="4">           
+                                    <table class="width100">
+                                        <tr class="box height35p">
+                                            <td class="padding3"  style="vertical-align:top" colspan="2">  
+                                                <table class="width90">
+                                                    <tr>
+                                                        <td class="width100">
+                                                            <field name="driverid" attrs="{'readonly': True}"/> 
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td class="padtd width20"  style="vertical-align:top">  
+                                                phone </td> 
+                                            <td  class="padtd width30" style="vertical-align:top"> 
+                                                <field name="rp_phone" attrs="{'readonly': True}"  /> 
+                                            </td>
+                                        </tr>
+                                        <tr class="box height35p">
+                                            <td  class="padtd width25 height35p" style="vertical-align:top" rowspan="3"> 
+                                                driver:    
+                                                <field name="rp_driverimage"  widget="image" attrs="{'readonly': True}" class="oe_avatar"/>   
+                                                <field name="drivername" attrs="{'readonly': True}"/>
+                                            </td>
+                                            <td  class="padtd width25 height35p"  style="vertical-align:top" rowspan="3"> 
+                                                Kor-Lap:
+                                            </td>
+                                            <td  class="padtd width20" style="vertical-align:top"> 
+                                                Mobile</td>
+                                            <td  class="padtd width30"  style="vertical-align:top"> 
+                                                <field name="rp_mobile" attrs="{'readonly': True}"/> 
+                                            </td>  
+                                        </tr>
+                                        <tr class="box height35p">
+                                            <td  class="padtd width20" style="vertical-align:top"> 
+                                                driver type</td>
+                                            <td  class="padtd width30"  style="vertical-align:top"> 
+                                                <field name="rp_drivertype" attrs="{'readonly': True}" /> 
+                                            </td>  
+                                        </tr> 
+                                        <tr class="box height35p">
+                                            <td  class="padtd width20" style="vertical-align:top"> 
+                                                driver alias</td>
+                                            <td  class="padtd width30"  style="vertical-align:top"> 
+                                                <field name="rp_alias" attrs="{'readonly': True}" />
+                                            </td>       
+                                        </tr> 
+                                    </table> 
+                                </group>     
+                            </page>  
+                            <page string="others" attrs="{'invisible': True}"> 
+                                <group>
+                                    <field name="isupload" attrs="{'invisible': True}"/>
+                                    <field name="isforminput"  attrs="{'invisible': True}"/> 
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>  
+                </sheet>
+                <header>
+                    <field name="stage" widget="statusbar"/>
+                </header>
+                <header>
+                    <field name="activestage" widget="statusbar"  attrs="{'invisible': [('activestage','not in',('CDR','CWO','CIV','CIC') )]}"/>
+                </header>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_draftwo_action" model="ir.actions.act_window">
+        <field name="name">Workorder</field> 
+        <field name="res_model">tl.tr.draftwo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data workorder pertamamu ...
+            </p>
+        </field>
+    </record>
+ 
+  </data>
+</odoo>

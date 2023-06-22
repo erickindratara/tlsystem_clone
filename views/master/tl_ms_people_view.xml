@@ -1,0 +1,88 @@
+<odoo>
+    <data>  
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START PEOPLE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+        
+        <!-- Membuat View Tree/List Course -->
+        <record id="tl_ms_people_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.people.tree</field>
+            <field name="model">tl.ms.people</field>
+            <field name="arch" type="xml">
+                <tree string=" List">
+                    <field name="type"/>
+                    <field name="korlap"/>
+                    <field name="fullname"/>
+                    <field name="nickname"/>  
+                    <field name="Birthdate"/>
+                    <field name="Joindate"/>
+                    <field name="Phone"/>
+                    <field name="KTP"/>
+                    <field name="SIM"/> 
+                    <field name="file_upload" widget='image'/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="tl_ms_people_view_search" model="ir.ui.view">
+            <field name="name">tl.ms.people.search</field>
+            <field name="model">tl.ms.people</field>
+            <field name="arch" type="xml">
+                <search string="Search people">
+                    <!-- <field name="name" string="filter" filter_domain="['|', ('draftselectable', '=', True), ('iscorrectcust', '=', True)]"/>  -->
+                    <searchpanel> 
+                        <field name="type"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+    <!-- Membuat View Form Course -->
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_people_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.people.form</field>
+            <field name="model">tl.ms.people</field>
+            <field name="arch" type="xml">
+                <form string="People Form"> 
+                    <header> 
+                        <button name='print_person' type='object' class='btn-primary' string='print'  /> 
+                    </header>
+                    <sheet>
+                        <group col="4" colspan="4"> 
+                            <field name="korlap"/> 
+                            <field name="fullname"/> 
+                            <field name="Birthdate"/>
+                            <field name="Joindate"/>
+                            <field name="type"/>
+                            <!--<field name="Leavedate"/>-->  
+                        </group> 
+                        <notebook>
+                            <page string="fullname">
+                                <group  col="4" colspan="4">
+                                    <field name="nickname"/>
+                                    <field name="Phone"/>
+                                    <field name="KTP"/>
+                                    <field name="SIM"/>
+                                    <field name="file_upload" widget='image'/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_people_action" model="ir.actions.act_window">
+            <field name="name">People</field>
+            <field name="res_model">tl.ms.people</field> 
+            <field name="view_mode">kanban,tree,form</field>  
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data Personal pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END PEOPLE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

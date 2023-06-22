@@ -1,0 +1,50 @@
+<odoo>
+  <data>    
+    <record id="tl_tr_pertanggungjawabanapproval_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.pertanggungjawabanapproval.tree</field>
+        <field name="model">tl.tr.pertanggungjawabanapproval</field>  
+        <field name="arch" type="xml"> 
+            <tree string="pertanggungjawabanapproval List">     
+                <field name="parent_id"/>  
+                <field name="sequence"/>       
+                <field name="userapproval"/>                       
+                <field name="approvallevel"/>   
+                <field name="approvaldate"/>      
+                <field name="approvalnote"/>      
+                <field name="pjid"/>               
+            </tree>  
+        </field> 
+    </record> 
+    <record id="tl_tr_pertanggungjawabanapproval_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.pertanggungjawabanapproval.form</field>
+        <field name="model">tl.tr.pertanggungjawabanapproval</field>
+        <field name="arch" type="xml">
+            <form string="People Form"> 
+                <sheet>
+                    <group  col="4" colspan="4">    
+                        <field name="parent_id"/>  
+                        <field name="sequence"/>       
+                        <field name="userapproval"/>                       
+                        <field name="approvallevel"/>   
+                        <field name="approvaldate"/>      
+                        <field name="approvalnote"/>      
+                        <field name="pjid"/>                    
+                    </group>              
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+    <record id="tl_tr_pertanggungjawabanapproval_action" model="ir.actions.act_window">
+        <field name="name">pertanggungjawabanapproval</field> 
+        <field name="res_model">tl.tr.pertanggungjawabanapproval</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data pertanggungjawabanapproval pertamamu ...
+            </p>
+        </field>
+    </record>
+ 
+  </data>
+</odoo>

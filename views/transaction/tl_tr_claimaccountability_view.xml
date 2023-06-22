@@ -1,0 +1,136 @@
+<odoo>
+  <data>    
+    <record id="tl_tr_claimaccountability_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.claimaccountability.tree</field>
+        <field name="model">tl.tr.claimaccountability</field>  
+        <field name="arch" type="xml"> 
+            <tree string="List uang jalan">    
+                <header>
+                    <button name="cekdefaultfilter" string="dev: click to add default groupby" class="oe_highlight" type="object"/>
+                </header>
+                <field name="customerid"/>  
+                <field name="claimid"/>  
+                <field name="claimaccountabilitydate"/>       
+                <field name="stage"/>                       
+                <field name="sumcost"/>   
+                <field name="sumclaim"/>    
+                <button name="button_cancelwithconfirm" string="Cancel" attrs="{'invisible': [('stage', '!=', 'DIC'),('stage', '!=', 'DIC')  ]}" type="object" class="btn-danger"/>            
+            
+                <field name="currentapprover" class="btn-danger"/>
+                <field name="currentapprover_related" class="btn-danger"/>      
+            </tree>  
+        </field> 
+    </record> 
+    <record id="tl_tr_claimaccountability_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.claimaccountability.form</field>
+        <field name="model">tl.tr.claimaccountability</field>
+        <field name="arch" type="xml">
+            <form string="People Form">
+                <header>
+                    <field name="stage" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group  col="4" colspan="4">    
+                        <field name="customerid"  widget="selection"  attrs="{'readonly': [('id', '!=', False)]}" /><!--ini klo mau full readonly-->  
+                        <field name="claimaccountabilitydate" attrs="{'readonly': [('stage', 'not in', ('New','DIC'))]}"/>
+                        <field name="claimid" attrs="{'readonly': True}"/> 
+                        <field name="korlap_id"/> 
+                              
+                    </group>             
+                    <group  col="1" colspan="4">   
+                        <div> 
+                            <field name="draftwo"  attrs="{'readonly': [('stage', 'not in', ('New','DIC'))]}" >  
+                                <tree string="String" editable="bottom">       
+                                    <field name="triptype"          attrs="{'readonly': True }"/>        
+                                    <field name="korlap_id"         attrs="{'readonly': True }"/>         
+                                    <field name="dwoid"             attrs="{'readonly': True }"/>        
+                                    <field name="stage"             attrs="{'readonly': True }" widget="html" />              
+                                    <field name="qi_jenistransaksi" attrs="{'readonly': True }"/>             
+                                    <field name="qi_locationfrom"   attrs="{'readonly': True }"/>          
+                                    <field name="qi_dropA_location" attrs="{'readonly': True }"/>          
+                                    <field name="qi_locationto" attrs="{'readonly': True }"/>        
+                                    <field name="qi_cost"           attrs="{'readonly': True }"/>
+                                    <field name="claimamount"  class="font20px"  widget="monetary"/>             
+                                </tree>  
+                            </field>
+                        </div> 
+                    </group>     
+                    <group  col="1" colspan="4">   
+                    <table  style="width:100%;">
+                        <tr>
+                            <td style="min-width: 0%; max-width: 100%;">
+                            </td>
+
+                            <td  style="width:600px;">
+                                <field name="approval" widget="many2many" >  
+                                    <tree string="String">        
+                                        <field name="sequence"     />     
+                                        <field name="approvallevel"/>     
+                                        <field name="userapproval" />     
+                                        <field name="approvaldate" />   
+                                        <field name="approvalnote" />           
+                                        
+                                    </tree>  
+                                </field>
+                            </td>
+                            <td  style="width:200px; vertical-align: top; ">   
+                                <table style="width: 100%">
+                                <tr><td class="alignright"> 
+                                    <button name="button_sameascost"      attrs="{'invisible': [('stage', '!=', 'DIC')]}"     string="claim = cost"     type="object" class="btn-secondary alignright"/>&amp;nbsp;
+                                    </td> 
+                                </tr> 
+                                <tr><td>
+                                
+                                </td></tr> 
+                                </table> 
+                                <group class="oe_subtotal_footer oe_left" >    
+                                     <field name="counts"   attrs="{'readonly': True}" />     
+                                    <field name="sumcost"   attrs="{'readonly': True}" />     
+                                    <field name="sumclaim"  attrs="{'readonly': True}" />     
+                                </group>  
+                            </td>
+                        </tr>
+                    </table> 
+                    </group>    
+                    <table style="width: 100%">
+                    <tr><td style="text-align: right">  
+                        <field name="currentapprover" widget="boolean_toggle" attrs="{'invisible': [(True)]}" />   
+                    <!-- attrs="{'invisible': [('stage', '!=', 'DIC')]}" -->
+                        <!-- <button name="btn_reqapprovalclaim"                                                           string="[1]Request Approval" type="object" class="btn-primary"/>&amp;nbsp; -->
+                        <!-- <button name="btn_debughapusapproval"    string="[Debug]hapus Approval" type="object" class="btn-danger"/>&amp;nbsp; -->
+                        <button name="btn_debughapusapproval"   attrs="{'invisible': [(True)]}" string="[Debug]hapus Approval" type="object" class="btn-danger"/>&amp;nbsp;
+                        <button name="btn_reqapprovalclaim"     attrs="{'invisible': ['|',('stage', '!=', 'DIC'      ), ('currentapprover', '=', False)]}" string="[1]Request Approval" type="object" class="btn-primary"/>&amp;nbsp;
+                        <button name="btn_spvopsapprovalclaim"  attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/OP1'), ('currentapprover', '=', False)]}" string="[2]OPS SPV Approve"  type="object" class="btn-primary"/>&amp;nbsp;
+                        <button name="btn_spvopsrejectclaim"    attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/OP1'), ('currentapprover', '=', False)]}" string="[2]OPS SPV Reject"   type="object" class="btn-danger"/>&amp;nbsp;
+                        <button name="btn_mgropsapprovalclaim"  attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/OP2'), ('currentapprover', '=', False)]}" string="[3]OPS MGR Approve"  type="object" class="btn-primary"/>&amp;nbsp;
+                        <button name="btn_mgropsrejectclaim"    attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/OP2'), ('currentapprover', '=', False)]}" string="[3]OPS MGR Reject"   type="object" class="btn-danger"/>&amp;nbsp;
+                        <button name="btn_spvfinapprovalclaim"  attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/FN1'), ('currentapprover', '=', False)]}" string="[4]FIN SPV Approve"  type="object" class="btn-primary"/>&amp;nbsp;
+                        <button name="btn_spvfinrejectclaim"    attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/FN1'), ('currentapprover', '=', False)]}" string="[4]FIN SPV Reject"   type="object" class="btn-danger"/>&amp;nbsp;
+                        <button name="btn_mgrfinapprovalclaim"  attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/FN2'), ('currentapprover', '=', False)]}" string="[5]FIN MGR Approve"  type="object" class="btn-primary"/>&amp;nbsp;
+                        <button name="btn_mgrfinrejectclaim"    attrs="{'invisible': ['|',('stage', '!=', 'REQ-C/FN2'), ('currentapprover', '=', False)]}" string="[5]FIN MGR Reject"   type="object" class="btn-danger"/>&amp;nbsp;
+                        <button name="btn_claimpaid"            attrs="{'invisible': [('stage', '!=', 'APV-C/COM')]}" string="[6]UANG JALAN PAID"  type="object" class="btn-primary"/>
+                        </td>                                                                             
+                    </tr><!-- buat button -->
+                    <tr><td>
+                    
+                    </td></tr> 
+                    </table> 
+ 
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+    <record id="tl_tr_claimaccountability_action" model="ir.actions.act_window">
+        <field name="name">uang jalan</field> 
+        <field name="res_model">tl.tr.claimaccountability</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data uang jalan pertamamu ...
+            </p>
+        </field>
+    </record>
+ 
+  </data>
+</odoo>

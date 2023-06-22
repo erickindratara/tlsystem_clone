@@ -1,0 +1,73 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START bugreport%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course -->
+    
+        <record id="tl_ms_bugreport_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.bugreport.tree</field>
+            <field name="model">tl.ms.bugreport</field>
+            <field name="arch" type="xml">
+                <tree string="bugreport List">
+                    <field name="type" widget="selection"/> 
+                    <field name="notes" widget="html"/>
+                    <field name="dateissued"/>  
+                </tree>
+            </field>
+        </record>  
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_bugreport_view_search" model="ir.ui.view">
+            <field name="name">tl.ms.bugreport.search</field>
+            <field name="model">tl.ms.bugreport</field>
+            <field name="arch" type="xml"> 
+                <search string="Search bugreport"> 
+                    <searchpanel>  
+                        <field name="issolved"  icon="fa-crosshairs" />
+                        <field name="statusproject"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+        <record id="tl_ms_bugreport_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.bugreport.form</field>
+            <field name="model">tl.ms.bugreport</field>
+            <field name="arch" type="xml">
+                <form string="bugreport Form">
+                    <sheet>
+                        <group  col="4" colspan="4"> 
+                            <field name="type" widget="selection"/>
+                            <field name="issolved" widget="selection"/>
+                            <field name="statusproject" widget="selection"/>
+                            <field name="dateissued"/>
+                            <field name="datesolved"/>
+                        </group>  
+                        <notebook>
+                            <page string="note">
+                                <group  col="1" colspan="1">  
+                                    <field name="notes" widget="html"/>
+                                    <field name="result"/>
+                                    <field name="attachment1"/> 
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_bugreport_action" model="ir.actions.act_window">
+            <field name="name">bugreport</field>
+            <field name="res_model">tl.ms.bugreport</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data bugreport pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END bugreport%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+    </data>
+</odoo>

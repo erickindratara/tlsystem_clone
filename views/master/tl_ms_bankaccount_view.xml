@@ -1,0 +1,62 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START bankaccount%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course -->
+    
+        <record id="tl_ms_bankaccount_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.bankaccount.tree</field>
+            <field name="model">tl.ms.bankaccount</field>
+            <field name="arch" type="xml">
+                <tree string="bankaccount List"> 
+                    <field name="bankaccountid"/>
+                    <field name="pytreceivealias"/>
+                    <field name="bankaccountname"/> 
+                    <field name="bankid"/> 
+                    <field name="bankbranch"/> 
+                    <field name="accountname"/> 
+                    <field name="accountno"/> 
+                    <field name="accountcode"/> 
+                    <field name="isactive" widget="boolean_toggle"/>  
+                </tree>
+            </field>
+        </record>  
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_bankaccount_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.bankaccount.form</field>
+            <field name="model">tl.ms.bankaccount</field>
+            <field name="arch" type="xml">
+                <form string="bankaccount Form">
+                    <sheet>
+                        <group  col="4" colspan="4">   
+                            <field name="bankaccountid"/>
+                            <field name="pytreceivealias"/>
+                            <field name="bankaccountname"/> 
+                            <field name="bankid"/> 
+                            <field name="bankbranch"/> 
+                            <field name="accountname"/> 
+                            <field name="accountno"/> 
+                            <field name="accountcode"/> 
+                            <field name="isactive"/>  
+                        </group>  
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_bankaccount_action" model="ir.actions.act_window">
+            <field name="name">bankaccount</field>
+            <field name="res_model">tl.ms.bankaccount</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data bankaccount pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END Customer%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+    </data>
+</odoo>

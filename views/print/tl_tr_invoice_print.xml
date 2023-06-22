@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="print_invoice" model="ir.actions.report">
+        <field name="name">MAM invoice</field> 
+        <field name="model">tl.tr.invoice</field> 
+        <field name="report_type">qweb-pdf</field> 
+        <!--<field name="report_name">stock_card.print_storing_list</field> -->
+        <!--<field name="report_name">tlsystem.print_people_list</field> -->
+        <field name="report_name">tlsystem.print_invoice_list</field> 
+        <field name="report_file">tlsystem.print_invoice_list</field> 
+        <field name="binding_model_id" eval="False"/>   
+        <field name="binding_type">report</field> 
+    </record>
+
+    <!--<template id="print_storing_list"> -->
+    <template id="print_invoice_list">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="data">
+                <div class="oe_structure"/>
+                <div class="page"> 
+                    <style type="text/css"> 
+
+                        .tableouter { 
+                            width: 100%;
+                            min-height: 700px !important;
+                            background-color: #CF0;/**/
+                        }
+                        .table1 {
+                            width: 90%;
+                            min-height: 500px !important; 
+                            /* width: 100%;
+                            background-color: red;
+                            font-size: 13px;
+                            font-family: Arial;
+                            border-collapse: collapse;
+                            border-bottom: 1px solid black;*/
+                        }
+                        .tableheader {
+                            width: 90%;
+                            text-align:right;
+                            min-height: 100px !important; 
+                            /*background-color: #666666;*/
+                        }
+                        .tablecontent1 {
+                            width: 90%;
+                            min-height: 100px !important; 
+                            /*background-color: #999999;*/
+                        }
+                        .tablecontent2 {
+                            width: 90%;
+                            min-height: 100px !important; 
+                            /*background-color: #666666;*/
+                        }
+                        .tablecontent3 {
+                            width: 90%;
+                            min-height: 20px !important; 
+                            /*background-color: red;*/
+                        }
+                        }
+                        .tableheadercontent {
+                            width: 100%;
+                            min-height: 120px !important;  
+                        }
+                        .tabletotalinv {
+                            width: 100%;
+                            min-height: 20px !important; 
+                        }
+                        .tablefooter {
+                            width: 90%;
+                            min-height: 20px !important; 
+                            /*background-color: #999999;*/
+                        }
+                        .aligntop{ 
+                            vertical-align:top;
+                            }
+                        .alignright{ 
+                            text-align:right;
+                            }
+                        .aligntopright{ 
+                            vertical-align:top;
+                            text-align:right;
+                            }
+                        .tdunderline {
+                            border-bottom: 2pt solid black;    
+                        }
+                    </style>  
+                    <font style="font-family:Calibri">
+
+                    <table class="tableouter aligntop">
+                        <tr>
+                            <td backcolor="green">
+                                <table class="tableheader tdunderline"  align="center">
+                                    <tr>
+                                        <td width="30%"    align="center">
+                                        INSERT LOGO  
+                                        <img src='/addons/web/static/src/img/db.png' style="height:100px;width:100px;"/>  
+                                        </td>
+                                        <td width="70%">
+                                            <table class="tableheadercontent" align="center">
+                                                <tr>
+                                                    <td align="center" height="20px">
+                                                        <b>PT MITRA ANANTA MEGAH</b>
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td>
+                                                        GD TUNAS RENTAL JL KAPTEN TENDEAN NO 16 - 19 RT 002 RW 005
+                                                        KUNINGAN BARAT MAMPANG PRAPATAN JAKARTA SELATAN
+                                                        Telp. (021) 29401706, Fax (021) 29401707
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="tablecontent1 tdunderline" align="center">
+                                    <tr>
+                                        <td width="50%" class="aligntop">
+                                            <table class="tableheadercontent" align="center">
+                                                <tr>
+                                                    <td align="left" height="20px">
+                                                        <b>Telah Terima dari</b>
+                                                    </td>
+                                                </tr>
+                                                <tr align="left" style="vertical-align:top">
+                                                    <td>
+                                                        PT Surya Sudeco (Company Name)</td>
+                                                </tr>
+                                                <tr align="left" style="vertical-align:top">
+                                                    <td>
+                                                        Bintaro Komersial CBD B7 Kavling A1/02 (Company address)
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                        <td width="50%">
+                                            <table class="tableheadercontent"  align="center">
+                                                <tr align="left" style="vertical-align:top" height="20px">
+                                                    <td width="40%">
+                                                        <b>No Invoice</b>
+                                                    </td>
+                                                    <td width="5px">:</td>
+                                                    <td width="60%">isi</td>
+                                                </tr>
+                                                <tr align="left" style="vertical-align:top" height="20px">
+                                                    <td>
+                                                        <b>NIK</b>
+                                                    </td>
+                                                    <td>:</td>
+                                                    <td>isi</td>
+                                                </tr>
+                                                <tr align="left" style="vertical-align:top" height="20px">
+                                                    <td>
+                                                        <b>NPWP</b>
+                                                    </td>
+                                                    <td>:</td>
+                                                    <td>isi</td>
+                                                </tr>
+                                                <tr align="left" style="vertical-align:top" height="100%">
+                                                    <td >
+                                                        <b>Tgl Jatuh Tempo</b>
+                                                    </td>
+                                                    <td>:</td>
+                                                    <td>isi</td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="tablecontent2"  align="center">
+                                    <tr>
+                                        <td width="30%" class="aligntop">
+                                            JASA TRANSPORTASI</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright">0</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td width="30%" class="aligntopright">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop">
+                                            POTONGAN DISCOUNT</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright">0</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td width="30%" class="aligntopright">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop">
+                                            DPP (DASAR PENGENAAN PAJAK)</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright">0</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td width="30%" class="aligntopright">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop">
+                                            PPn (10% x DPP)</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright">0</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td width="30%" class="aligntopright">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop">
+                                            BIAYA MATERAI</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright">0</td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td width="30%" class="tdunderline aligntopright">0</td>
+                                    </tr>
+                                </table>
+                                <table class="tablefooter tdunderline" align="center">
+                                    <tr>
+                                        <td width="30%"> 
+                                            <b>TOTAL</b>
+                                        </td>
+                                        <td width="5%"></td>
+                                        <td width="30%">
+                                            
+
+                                        </td>
+                                        <td width="5%" class="aligntopright"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright">0</td>
+                                    </tr>
+                                </table>
+                                <table class="tablefooter" align="center">
+                                    <tr>
+                                        <td width="30%" colspan="6"> 
+                                            <b>Terbilang</b>
+                                        </td> 
+                                    </tr>
+                                </table>
+                                <table width="100%" align="center" class="tablefooter">
+                                    <tr>
+                                        <td width="70%">  
+                                            <table width="100%">
+                                                <tr><td width="100%">Please Transfer To:                                                    </td></tr>
+                                                <tr><td width="100%"><b>Bank Central Asia</b>                                               </td></tr>
+                                                <tr><td width="100%"><b>Menara Imperium</b>                                                 </td></tr>
+                                                <tr><td width="100%"><b>A/N: PT. MITRA ANANTA MEGAH</b>                                     </td></tr>
+                                                <tr><td width="100%"><b>A/C: 2113040545</b>                                                 </td></tr>
+                                                <tr><td width="100%">Jika sudah melaksanakan pembayaran harap bukti transfer di fax ke no.  </td></tr>
+                                                <tr><td width="100%">(021)29401706 atau hubungin Rita (021) 29401707                        </td></tr>
+                                            </table>   
+                                        </td>
+                                        <td width="30%">
+                                            <table class="tableheadercontent" align="center">
+                                                <tr>
+                                                    <td align="center" height="20px">
+                                                        Tangerang, 01 Jan 2022
+                                                    </td>
+                                                </tr>
+                                                 <tr align="center" height="100px">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr align="center" height="20px">
+                                                    <td class="tdunderline">
+                                                        Didi Kristyono
+                                                    </td>
+                                                </tr>
+                                                <tr align="center" height="20px">
+                                                    <td>
+                                                        <b>Finance</b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table> 
+                    
+                        </font>
+ 
+                    <!--<p class="text-right">Total: <span t-esc="sum(l.qty for l in people_obj.line_ids)"/> Pcs</p>-->
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

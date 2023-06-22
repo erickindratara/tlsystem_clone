@@ -1,0 +1,49 @@
+<odoo>
+    <data>     
+        <record id="tl_ms_tokenhistory_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.tokenhistory.tree</field>
+            <field name="model">tl.ms.tokenhistory</field>
+            <field name="arch" type="xml">
+                <tree string="tokenhistory List"> 
+                    <field name="token"/>
+                    <field name="generateddate"/>
+                    <field name="expireddate"/>
+                    <field name="usedcount"/>  
+                    <field name="isactive"/>  
+                    <field name="clientid"/>  
+                    <field name="secretkey"/>  
+                </tree>
+            </field>
+        </record>   
+
+        <record id="tl_ms_tokenhistory_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.tokenhistory.form</field>
+            <field name="model">tl.ms.tokenhistory</field>
+            <field name="arch" type="xml">
+                <form string="tokenhistory Form">
+                    <sheet>
+                        <group  col="4" colspan="4">    
+                            <field name="token"/>
+                            <field name="generateddate"/>
+                            <field name="expireddate"/>
+                            <field name="usedcount"/>  
+                            <field name="isactive"/>
+                            <field name="clientid"/>  
+                            <field name="secretkey"/>  
+                        </group>  
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+        <record id="tl_ms_tokenhistory_action" model="ir.actions.act_window">
+            <field name="name">tokenhistory</field> 
+            <field name="res_model">tl.ms.tokenhistory</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data tokenhistory pertamamu ...
+                </p>
+            </field>
+        </record> 
+    </data>
+</odoo>

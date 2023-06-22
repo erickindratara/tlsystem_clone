@@ -1,0 +1,86 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START Customer location%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course --> 
+        <record id="tl_ms_customerlocation_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.customerlocation.tree</field>
+            <field name="model">tl.ms.customerlocation</field>
+            <field name="arch" type="xml">
+                <tree string="customerlocation List"> 
+                    <field name="ref"/> 
+                    <field name="customerid"/> 
+                    <field name="locationname"/> 
+                </tree>
+            </field>   
+        </record>    
+
+        <record id="tl_ms_customerlocation_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.customerlocation.form</field>
+            <field name="model">tl.ms.customerlocation</field>
+            <field name="arch" type="xml">
+                <form string="Customer location Form">
+                    <sheet>
+                        <group  col="4" colspan="4"> 
+                            <field name="ref"/>  
+                            <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/> 
+                            <field name="custinitial" attrs="{'readonly': True}" force_save='1' /> 
+                            <!-- ini jgn diubah2 ffs -->
+                        </group> 
+                        <notebook>
+                            <page string="location">
+                                <group  col="4" colspan="4">   
+                                    <field name="locationname"/>   
+                                </group>
+                            </page>
+                        </notebook>  
+                    </sheet>
+                </form>
+            </field>
+        </record>  
+        <record id="tl_ms_customerlocation_action" model="ir.actions.act_window">
+            <field name="name">customer location</field>
+            <field name="res_model">tl.ms.customerlocation</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="context">{"search_default_melee":1}</field> -->
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data customer location pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+         <!-- <record id="tl_ms_customerlocation_action" model="ir.actions.server">
+            <field name="name">customer location</field> 
+            <field name="model_id" ref="tlsystem.model_tl_ms_customerlocation"/>
+            <field name="code">
+                action = env['tl.ms.customerlocation'].action_b2b_portal_client()
+            </field>
+        </record>   -->
+
+
+        
+            <!-- ini gak<field name="res_model">tl.ms.customerlocation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data customer location pertamamu ...
+                </p>
+            </field> -->
+            
+
+        <!-- Membuat Action/Event Course --> 
+        <!-- <record id="tl_ms_customerlocation_action" model="ir.actions.act_window">
+            <field name="name">customer location</field>
+            <field name="res_model">tl.ms.customerlocation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data customer location pertamamu ...
+                </p>
+            </field>
+        </record> -->
+            
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END Customer location%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->   
+    <record id="view_user_property_iban_form" model="ir.ui.view"> 
+        <field name="name">res.users.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml"> 
+            <xpath expr="//field[@name='company_id']" position="after">  
+                <field name="is_useraccessgiven" attrs="{'readonly': [True]}" ></field>   
+                <field name="customtoken"></field>   
+                <button string="Request" name="coba"  type="object" class="btn-info"/> 
+            </xpath> 
+            
+        </field>
+    </record>   
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

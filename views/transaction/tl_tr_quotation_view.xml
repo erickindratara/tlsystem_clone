@@ -1,0 +1,75 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START QUOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course --> 
+    <record id="tl_tr_quotation_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.quotation.tree</field>
+        <field name="model">tl.tr.quotation</field>
+        <field name="arch" type="xml">
+            <tree string="quotation List">
+                <!-- <field name="id"/> -->
+                <field name="defaultcustomer"/>  
+                <field name="customerid"/>  
+                <field name="quotationid"/>   
+                <field name="quotationitemid"/>    
+                <field name="stage"/>    
+                <field name="iscorrectcust"/>    
+                <button name="action_confirmposting" string="publish" attrs="{'invisible':[('stage','=','PUB')]}"  confirm="yakin mau pencet tombol ini?" class="btn-primary" type="object"/>
+                <button name="action_confirmrevertdraft" string="Draft"  attrs="{'invisible':[('stage','=','DRF')]}" confirm="yakin mau pencet tombol ini?" class="btn-danger" type="object"/>
+            </tree>
+        </field> 
+    </record>   
+     
+    <!-- Membuat View Form Course -->
+    
+    <record id="tl_tr_quotation_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.quotation.form</field>
+        <field name="model">tl.tr.quotation</field>
+        <field name="type">form</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="quotation Form">
+                <header>
+                    <field name="stage" widget="statusbar"/>
+                </header>
+                <sheet> 
+                    <group  col="4" colspan="4">   
+                        <!-- <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/> ini kalo disable aftersave -->
+                        <field name="customerid" readonly="1" widget="selection"/> <!-- ini klo mau full readonly --> 
+                        <field name="quotationid"/>    
+                        <field name="debug"/>  
+                    </group> 
+                    <notebook>
+                        <page string="-">
+                            <group  col="4" colspan="4">     
+                                <!-- <field name="quotationitemid" domain="[('iscorrectcust', '=',  True),('quotationid', '=', False)]"/>     -->
+                                <div>
+                                    <field name="quotationitemid"/>        
+                                </div>
+                            </group>  
+                        </page> 
+                    </notebook> 
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_quotation_action" model="ir.actions.act_window">
+        <field name="name">quotation</field>
+        <!-- <field name="domain">[('iscorrectcust', '=',  True)]</field> -->
+        <field name="res_model">tl.tr.quotation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Imput data QUotation pertamamu ...
+            </p>
+        </field>
+    </record>
+        
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END QUOTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

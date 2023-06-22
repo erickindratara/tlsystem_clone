@@ -1,0 +1,91 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START master expense%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course --> 
+        <record id="tl_ms_expense_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.expense.tree</field>
+            <field name="model">tl.ms.expense</field>
+            <field name="arch" type="xml">
+                <tree string="Master expense List"> 
+                    <field name="custinitial"/>
+                    <field name="expsid"/> 
+                    <field name="title"/>    
+                    <field name="name"/>    
+                    <field name="description"/> 
+                    <field name="estimatedcost"/>   
+                </tree>
+            </field>
+        </record>   
+        
+        <!-- Membuat View Form Course -->
+        
+        <!-- <record id="tl_ms_expense_view_search" model="ir.ui.view">
+            <field name="name">tl.ms.expense.search</field>
+            <field name="model">tl.ms.expense</field>
+            <field name="arch" type="xml">
+                <search string="Search expense">
+                    <field name="name" string="filter" filter_domain="['|', ('draftselectable', '=', True), ('iscorrectcust', '=', True)]"/> 
+                    <searchpanel> 
+                        <field name="description"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record> -->
+
+        <record id="tl_ms_expense_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.expense.form</field>
+            <field name="model">tl.ms.expense</field>
+            <field name="arch" type="xml">
+                <form string="master expense Form">
+                    <sheet>
+                        <group  col="4" colspan="4">  
+                            <!-- <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/> ini kalo disable aftersave -->
+                            <field name="customerid" readonly="1" widget="selection"/> <!-- ini klo mau full readonly --> 
+                            <field name="custinitial"/>
+                            <field name="expsid"/>  
+                        </group> 
+                        <notebook>
+                            <page string="master expense">
+                                <group  col="4" colspan="4">    
+                                    <field name="name"/> 
+                                    <field name="title"  style="width:40%%"/>    
+                                    <field name="description"/>     
+                                    <field name="estimatedcost"/>  
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_expense_action" model="ir.actions.act_window">
+            <field name="name">expense</field>
+            <field name="domain">[('iscorrectcust', '=',  True)]</field>
+            <field name="res_model">tl.ms.expense</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data master expense pertamamu ...
+                </p>
+            </field>
+        </record> 
+                
+
+        <!-- <record id="tl_ms_expense_action2" model="ir.actions.act_window">
+            <field name="name">expense2</field>
+            <field name="res_model">tl.ms.expense</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="tl_ms_expense_view_form"/>
+            <field name="binding_model_id" ref="tl_ms_expense" />
+            <field name="binding_view_types">list</field>
+        </record> -->
+                  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END master expense %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+     
+  
+    </data>
+</odoo>

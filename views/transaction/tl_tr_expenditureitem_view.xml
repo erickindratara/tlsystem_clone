@@ -1,0 +1,61 @@
+
+<odoo>
+    <data>   
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START expenditure ITEM%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course --> 
+        <!-- <record id="tl_tr_expenditureitem_view_tree" model="ir.ui.view">
+            <field name="name">tl.tr.expenditureitem.tree</field>
+            <field name="model">tl.tr.expenditureitem</field>
+            <field name="arch" type="xml">
+                <tree string="expenditureitem List"> 
+                    <field name="ref"/> 
+                    <field name="customerid"/>
+                    <field name="name"/>    
+                    <field name="description"/> 
+                    <field name="cost"/>          
+                </tree>
+            </field>
+        </record>    -->
+        
+        <!-- Membuat View Form Course -->
+        
+        <!-- <record id="tl_tr_expenditureitem_view_form" model="ir.ui.view">
+            <field name="name">tl.tr.expenditureitem.form</field>
+            <field name="model">tl.tr.expenditureitem</field>
+            <field name="arch" type="xml">
+                <form string="expenditureitem Form">
+                    <sheet>
+                        <group  col="4" colspan="4"> 
+                            <field name="customerid"/>
+                                    <field name="ref"/>  
+                        </group> 
+                        <notebook>
+                            <page string="expenditure item">
+                                <group  col="4" colspan="4">    
+                                    <field name="name"/> 
+                                    <field name="description"/>     
+                                    <field name="cost"/>      
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
+        
+
+        <!-- Membuat Action/Event Course -->
+        <!-- <record id="tl_tr_expenditureitem_action" model="ir.actions.act_window">
+            <field name="name">expenditureitem</field>
+            <field name="res_model">tl.tr.expenditureitem</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data expenditure item pertamamu ...
+                </p>
+            </field>
+        </record> -->
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END expenditure ITEM%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

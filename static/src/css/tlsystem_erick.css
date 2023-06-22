@@ -1,0 +1,255 @@
+ 
+/* #76be43 hijau tunas rent */
+/* #76be43 hijau tunas rent lebih gelap*/
+.o_main_navbar .o_menu_systray {
+  background-color: #005cae !important;
+  color: #ffffff !important;
+}
+.o_main_navbar .o_menu_systray > li > a:hover {
+  background-color: #76be43 !important;
+  color: #ffffff !important;
+}
+/* A:\GIT-PERSONAL\faster14\server\odoo\addons\web\static\src\scss\primary_variables.scss */
+/* A:\GIT-PERSONAL\MAM-Expedition-odoo14-Project\odoo-14\addons\web\static\src\scss\primary_variables.scss */
+/* ini buat   menu top right. yang ada PT dan username. jika di klik akan keluar warna ini */
+.o_main_navbar .o_menu_systray > li > a:focus {
+  background-color: #76be43 !important;
+  color: #ffffff !important;
+}
+.o_menu_systray > .o_menubrand:hover {
+  color: #76be43; /* replace with your desired color */
+}
+
+.o_main_navbar .o_menu_apps {
+  background-color: #619939 !important;
+  color: #ffffff !important;
+  color: #4c4c4c !important;
+}
+
+.o_main_navbar .o_menu_apps > li > a:hover {
+  background-color: #76be43 !important;
+  color: #ffffff !important;
+}
+
+.o_main_navbar .o_menu_apps > li.show > a {
+  background-color: #76be43 !important;
+  color: #ffffff !important;
+} 
+.o_form_view .o_form_sheet {
+  background-color: #ffffff !important; 
+} 
+.o_form_sheet {
+  max-width: none !important;
+  max-width: 95% !important;
+  position: static !important;
+}  
+table th  {
+  /* background-color: #0d81e7 !important; */ 
+  padding: 10px;
+}      
+          
+tbody > tr.o_group_header > th,
+tbody > tr.o_group_header > td { 
+  background-color: #469be5 !important; 
+} 
+tbody > tr.o_group_header:hover > th,
+tbody > tr.o_group_header:hover > td { 
+  border: 1px solid #ddd;
+  background-color: #005cae !important;
+  color: rgb(200, 244, 244);
+  cursor: pointer;
+}
+
+.customtable_thback{
+  /* background-color: #0d81e7 !important; */
+  text-align: center;
+  background-color: #189b33 !important;
+  color: rgb(200, 244, 244); 
+}     
+tr:hover .o_monetary_cell {
+  background-color: #f0faf3;
+  border-bottom: 1px dashed #989898;   
+
+} 
+.customtable_thpanel{
+  /* background-color: #0d81e7 !important; */
+  background-color: #19ff47 !important;
+  color: rgb(200, 244, 244); 
+}    
+.customtable_td1{
+  white-space: nowrap;
+  background-color: #c8e3b4 !important; 
+  padding: 2px;
+}    
+.customtable_td1 td:hover {
+   border: 3px solid rgb(170, 254, 13);
+    background-color: rgb(207, 240, 182) !important; 
+}
+.customtable_td2{
+  white-space: nowrap;
+  background-color: #e1f1d5; 
+  padding: 2px;
+}    
+.customtable_td2 td:hover {
+  border: 3px solid rgb(170, 254, 13);
+  background-color: #eff3eb ;  
+}    
+/* Style the table content */ 
+/* untuk row di tree view */
+.o_list_table { 
+  background-color: #f7f7f7 !important;
+} 
+.alignright
+{
+  text-align: right; 
+} 
+.aligncenter
+{
+  text-align: center;
+}
+.defaultTextBox {
+    padding: 0;
+    height: 30px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: red;
+    font-size: 16px;
+}
+.advancedSearchTextbox {
+    width: 526px;
+    margin-right: -4px;
+}
+
+/* .readonlytextbox {
+    border-radius: 5px;
+    border: -10px solid #4db5c9; 
+    min-width: 250px; 
+    max-width: 250px; 
+    background-color: #e9f5f7;
+    height: 25.5px;   
+    text-indent: 7px;
+    margin-left: 104px; 
+  }  */
+.hide {
+  visibility: hidden;
+}
+.readonlytextbox {
+    border-radius: 5px;
+    border: 1px solid #bbe9f2; 
+    min-width: 350px; 
+    max-width: 350px; 
+    background-color: #e9f5f7;
+    height: 25.5px;     
+  } 
+.readonlytextboxright {
+    border-radius: 5px;
+    border: 1px solid #4db5c9; 
+    min-width: 350px; 
+    max-width: 350px; 
+    background-color: #e9f5f7;
+    height: 25.5px; 
+    text-align: right; 
+    text-indent: 7px;
+    padding-right: 7px;
+  } 
+
+  .labeltitle { 
+    font-weight: bold; 
+    min-width: 150px; 
+    text-indent: 7px; 
+    padding-right: 7px;
+  } 
+.width20 {width: 15%;} 
+.width25 {width: 25%;} 
+.width30 {width: 35%;} 
+.width80 {width: 80%;} 
+.width50 {width: 50%;} 
+.width90 {width: 90%;} 
+.width100 {width: 100%;} 
+.height25p {height: 25px;} 
+.height35p {height: 35px;} 
+.height20px {height: 20px;} 
+.height100 { height: 100%;} 
+.height200px {height: 200px;} 
+.font50px { font-size: 30px;  text-align: right;} 
+.font20px { font-size: 20px;  text-align: right;} 
+.padtd{
+  padding-left: 17px;
+  padding-right: 34px;}
+.checkbox   
+{   
+	height: 20px; width: 20px;  
+}
+.underdiv
+{ 
+	height: 20px; width: 20px;  
+    border-left: 1px solid rgb(174, 174, 174);
+    border-bottom: 1px solid rgb(174, 174, 174);
+    border-right: 1px solid rgb(174, 174, 174);
+    vertical-align: middle;
+}
+.box
+{  
+    border-left: 1px solid rgb(243, 243, 243);
+    border-bottom: 1px solid rgb(243, 243, 243);
+    border-top: 1px solid  rgb(243, 243, 243);
+    border-right: 1px solid rgb(243, 243, 243);
+}
+.padding3
+{ 
+    padding-right: 3px;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-bottom: 3px;
+}
+.paddingleft40
+{
+  padding-left: 40px;
+
+}
+
+input.largercb {
+  width: 50px;
+  height: 50px;
+}
+.btn_erik{ 
+   background-color: #41e211;
+}
+.dwo_deliveryunit{ 
+   background-color: #e9f5f4;
+   border-radius: 5px;
+   padding: 20px;
+}
+.dwo_logistic{ 
+   background-color: #f7f4eb;
+   border-radius: 10px;
+   padding: 20px;
+}
+.dwo_other{ 
+   background-color: #eff7eb;
+   border-radius: 10px;
+   padding: 20px;
+}
+.dwo_red{ 
+   background-color: #c56627; 
+}
+.quot_page_red{
+  background-color: #e2cad0;
+  border-radius: 10px;
+  padding: 20px; 
+}
+.quot_page_green
+{
+  background-color: #e6f0d9;
+  border-radius: 10px;
+  padding: 20px; 
+}
+.quot_page_blue
+{
+  background-color: #d8e8f5; 
+  border-radius: 10px;
+  padding: 20px;
+}

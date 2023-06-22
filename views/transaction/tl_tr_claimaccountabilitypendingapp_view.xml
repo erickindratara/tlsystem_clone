@@ -1,0 +1,34 @@
+<odoo>
+  <data>  
+    <record id="tl_tr_claimaccountability_view_tree_forapproval" model="ir.ui.view">
+        <field name="name">tl.tr.claimaccountability.tree.forapproval</field>
+        <field name="model">tl.tr.claimaccountability</field>  
+        <field name="arch" type="xml"> 
+            <tree string="List uang jalan 2">     
+                <field name="customerid"/>  
+                <field name="claimid"/>  
+                <field name="claimaccountabilitydate"/>       
+                <field name="stage"/>                       
+                <field name="sumcost" class="btn-danger"/>         
+                <field name="currentapprover" class="btn-danger"/>
+                <!-- <field name="currentapprover_related" class="btn-danger"/>                  -->
+                <!-- <filter string="Custom Filter" name="custom_filter" domain="[('claimid', '=', '	CLAIM/TAU/23/001')]"/> -->
+            
+            </tree>  
+        </field> 
+    </record>   
+    <record id="tl_tr_claimaccountability_action_forapproval" model="ir.actions.act_window">
+        <field name="name">uang jalan2 tot</field> 
+        <field name="res_model">tl.tr.claimaccountability</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data uang jalan pertamamu ...
+            </p>
+        </field>
+        <field name="view_id" ref="tl_tr_claimaccountability_view_tree_forapproval"/>
+        <!-- <field name="domain">[('currentapprover_related', '=', True)]</field> -->
+
+    </record>  
+  </data>
+</odoo> 

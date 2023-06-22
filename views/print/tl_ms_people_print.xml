@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="print_people" model="ir.actions.report">
+        <field name="name">nama_report_people</field> 
+        <field name="model">tl.ms.people</field> 
+        <field name="report_type">qweb-pdf</field> 
+        <!--<field name="report_name">stock_card.print_storing_list</field> -->
+        <!--<field name="report_name">tlsystem.print_people_list</field> -->
+        <field name="report_name">tlsystem.print_people_list</field> 
+        <field name="report_file">tlsystem.print_people_list</field> 
+        <field name="binding_model_id" eval="False"/>   
+        <field name="binding_type">report</field> 
+    </record>
+
+    <!--<template id="print_storing_list"> -->
+    <template id="print_people_list">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="data">
+                <div class="oe_structure"/>
+                <div class="page">
+                    <style type="text/css">
+                        h1 {
+                            font-size: 20;
+                            font-weight:bold;
+                            font-family: Arial;
+                        }
+
+                        p {
+                            font-size: 10;
+                            font-weight:bold;
+                            font-family: Arial;
+                        }
+
+                        table {
+                            width: 100%;
+                            background-color: red;
+                            font-size: 13px;
+                            font-family: Arial;
+                            border-collapse: collapse;
+                            border-bottom: 1px solid black;
+                        }
+
+                        #reportHeader tr:last-child td {
+                            padding-bottom: 1.5rem
+                        } 
+
+                        #reportHeader tr td {
+                            padding: 4px 3px;
+                        }
+
+                        #contentLead tr:last-child td table #contentHeader tr th,
+                        #contentLead tr:last-child td table #contentBody tr td {
+                            padding: 4px 3px;
+                            border: 1px solid black;
+                        }
+
+                        #contentLead tr:last-child td table #contentHeader tr th {
+                            text-align: center;
+                        }
+
+                        #contentLead tr:first-child td {
+                            border-top: 1px solid black;
+                            padding-top: 0.5rem !important;
+                        }
+
+                        #contentLead tr:last-child td {
+                            padding-left: 0.3rem;
+                            padding-right: 0.3rem;
+                            border-right: 1px solid black;
+                            border-left: 1px solid black;
+                        }
+
+                        #contentLead tr td {
+                            padding: 4px 3px;
+                        }
+
+                        .text-right {
+                            font-size: 15;
+                            text-align: right;
+                        }
+
+                        .text-center {
+                            text-align: center;
+                        }
+
+                        .lb { 
+                            border-left: 1px solid black;
+                            padding-left: 3px;
+                        }
+
+                        .n-lb {
+                            border-left: 1px solid red !important;
+                        }
+
+                        .rb { 
+                            border-right: 1px solid black;
+                            padding-right: 3px;
+                        }
+
+                        .w2px {
+                            width: 2px !important;
+                        }
+
+                        .w20px {
+                            min-width: 20px !important;
+                        }
+                        <!--erick css-->
+                        
+                        .herickpx {
+                            min-height: 550px !important;
+                            background-color: green;
+                        }
+                        .herick2px {
+                            min-height: 500px !important;
+                            background-color: blue;
+                        }
+                        <!--erick css-->
+                    
+                    </style>
+                    <table class="herickpx">
+                        <thead id="reportHeader">
+                            <h1 class="">PEOPLE TITLE</h1>
+                        </thead>
+                        <tbody id="contentLead">
+                            <tr class="herick2px">
+                                <td class="lb w20px" colspan="2">nama</td>
+                                <td class="w2px">:</td>
+                                <td colspan="2"><span t-esc="people_obj.fullname"/></td>
+                                <td>Tanggal lahir</td>
+                                <td class="w2px">:</td>
+                                <td class="rb" colspan="4"><span t-esc="people_obj.Birthdate"/></td>
+                            </tr>  
+                        </tbody>
+                    </table>
+
+                    <table>
+                        <thead id="reportHeader">
+                            <h1 class="text-center">PEOPLE TITLE</h1>
+                        </thead>
+                        <tbody id="contentLead">
+                            <tr>
+                                <td class="lb w20px" colspan="2">nama</td>
+                                <td class="w2px">:</td>
+                                <td colspan="2"><span t-esc="people_obj.fullname"/></td>
+                                <td>Tanggal lahir</td>
+                                <td class="w2px">:</td>
+                                <td class="rb" colspan="4"><span t-esc="people_obj.Birthdate"/></td>
+                            </tr> 
+                            <tr>
+                                <td colspan="11">
+                                    <table>
+                                        <thead id="contentHeader">
+                                            <tr> 
+                                                <th>type</th>
+                                                <th>korlap</th>
+                                                <th>fullname</th>
+                                                <th>Birthdate</th>
+                                                <th>Joindate</th>
+                                                <th>Phone</th>
+                                                <th>KTP</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody id="contentBody"> 
+                                            <tr t-foreach="people_obj" t-as="move">
+                                                <td><span t-esc="move.type"/> </td>
+                                                <td class="text-center"><span t-esc="move.korlap"/> </td>
+                                                <td><span t-esc="move.fullname"/> </td>
+                                                <td><span t-esc="move.Birthdate"/> </td>
+                                                <td class="text-center"><span t-esc="move.Joindate"/> </td>
+                                                <td><span t-esc="move.Phone"/> </td>
+                                                <td><span t-esc="move.KTP"/> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<p class="text-right">Total: <span t-esc="sum(l.qty for l in people_obj.line_ids)"/> Pcs</p>-->
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

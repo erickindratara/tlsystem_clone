@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START master user%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course --> 
+        <record id="tl_ms_user_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.user.tree</field>
+            <field name="model">tl.ms.user</field>
+            <field name="arch" type="xml">
+                <tree string="Master user List">      
+                    <field name="id"/>              
+                    <field name="user_picture" widget="image" options="{'size': [25, 25]}"/>
+                    <field name="user_id" widget="badge"/>      
+                    <field name="defaultcustomer"  widget="selection"/>
+                    <field name="cust_image" widget="image"  options="{'size': [25, 25]}"/>         
+                </tree>
+            </field>
+        </record>   
+        
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_user_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.user.form</field>
+            <field name="model">tl.ms.user</field>
+            <field name="arch" type="xml"> 
+                <form string="master user Form">
+                    <sheet>
+                        <group  col="4" colspan="4"> 
+                            <field name="defaultcustomer"  widget="selection"/>     
+                            <field name="cust_image" widget="image" options="{'size': [50, 50]}"/>   
+                            <field name="user_id" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/>
+                            <field name="user_picture" widget="image" options="{'size': [50, 50]}"/>
+                        </group>  
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_user_action" model="ir.actions.act_window">
+            <field name="name">user</field>
+            <field name="res_model">tl.ms.user</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Input data master user pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+        <record id="tl_ms_user_action_changebranch" model="ir.actions.act_window">
+            <field name="name">user</field>
+            <field name="res_model">tl.ms.user</field>   
+            <field name="view_mode">tree,form</field>    
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Input data master user pertamamu ...
+                </p>
+            </field>
+ 			<field name="domain">[('user_id', '=', uid)]</field>
+        </record>
+         
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END master user %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->  
+
+    </data>
+</odoo>

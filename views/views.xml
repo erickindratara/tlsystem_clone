@@ -1,0 +1,59 @@
+<odoo>
+  <data> 
+
+ 
+
+    <!-- Membuat Menu Dashboard -->
+      
+    <menuitem id="menu_dashboard_tl_master" name="Logi Master" web_icon="tlsystem,static/description/icon.png"/>   
+    <menuitem id="menu_bar_t1"                      name="People" parent="menu_dashboard_tl_master"/> 
+    <!-- <menuitem id="menu_item_tl_ms_people"           name="Driver"           parent="menu_bar_t1" action="tl_ms_people_action"/> -->
+    <menuitem id="menu_item_t1_ms_user"             name="User"             parent="menu_bar_t1" action="tl_ms_user_action"/>
+    <menuitem id="menu_item_t1_ms_userapproval"     name="Userapproval"     parent="menu_bar_t1" action="tl_ms_userapproval_action"/>
+    <menuitem id="menu_item_tl_ms_customer"         name="Customer"         parent="menu_bar_t1" action="tl_ms_customer_action"/>
+    <menuitem id="menu_item_tl_ms_customerlocation" name="CustomerLocation" parent="menu_bar_t1" action="tl_ms_customerlocation_action"/>
+    
+    <menuitem id="menu_bar_t2" name="product" parent="menu_dashboard_tl_master"/>  
+    <menuitem id="menu_item_tl_ms_productbrand" name="productbrand" parent="menu_bar_t2" action="tl_ms_productbrand_action"/>
+    <menuitem id="menu_item_tl_ms_productbrandcategory" name="productbrandcategoery" parent="menu_bar_t2" action="tl_ms_productbrandcategory_action"/>
+
+
+    <menuitem id="menu_bar_t3"                  name="Bank"        parent="menu_dashboard_tl_master"/>
+    <menuitem id="menu_item_tl_ms_bankmaster"   name="bankmaster"  parent="menu_bar_t3" action="tl_ms_bankmaster_action"/>
+    <menuitem id="menu_item_tl_ms_bankaccount"  name="bankaccount" parent="menu_bar_t3" action="tl_ms_bankaccount_action"/>
+    <menuitem id="menu_item_tl_ms_expense"      name="Expense"     parent="menu_bar_t1" action="tl_ms_expense_action"/>
+    <!-- <menuitem id="menu_item_training_wizard" name="Add Attendees" parent="menu_item_tl_ms_expense" action="tl_ms_expense_action2"/> -->
+
+    <menuitem id="menu_bar_t4"                  name="Technical"   parent="menu_dashboard_tl_master"/> 
+    <menuitem id="menu_item_tl_ms_modulelist"   name="ModuleList"  parent="menu_bar_t4" action="tl_ms_modulelist_action"/>
+    <menuitem id="menu_item_tl_ms_modulestage"  name="ModuleStage" parent="menu_bar_t4" action="tl_ms_modulestage_action"/> 
+    <menuitem id="menu_item_tl_ms_bugreport"  name="bugreport" parent="menu_bar_t4" action="tl_ms_bugreport_action"/> 
+    <menuitem id="menu_item_tl_ms_tokenhistory"  name="tokenhistory" parent="menu_bar_t4" action="tl_ms_tokenhistory_action"/> 
+    
+    <!-- <menuitem id="res_partner"                  name="Human Resources" parent="menu_bar_t4" action="tl_ms_modulestage_action"/> --> 
+    <!-- <menuitem id="109" parent="menu_bar_t4" action="base.action_partner_customer_form" name = "Customers" /> -->
+    <menuitem id="menu_dashboard_tl" name="Logi Transaction" web_icon="tlsystem,static/description/icon.png"/>   
+
+    <menuitem id="menu_bar_t6" name="Transaction" parent="menu_dashboard_tl"/> 
+      <menuitem id="menu_item_tl_tr_workorder1" name="WO"                   parent="menu_bar_t6" action="tl_tr_draftwo_action"/> 
+      <menuitem id="menu_item_tl_tr_workorder2" name="Sales Order"          parent="menu_bar_t6" action="tl_tr_workorder_action"/> 
+      <!-- <menuitem id="menu_item_tl_tr_workorder3" name="Quotation" parent="menu_bar_t6" action="tl_tr_quotation_action"/> -->
+      <menuitem id="menu_item_tl_tr_workorder4" name="QuotationItem"        parent="menu_bar_t6" action="tl_tr_quotationitem_action"/>
+      <menuitem id="menu_item_tl_tr_workorder6" name="Uang Jalan"           parent="menu_bar_t6" action="tl_tr_claimaccountability_action"/>
+      <menuitem id="menu_item_tl_tr_workorder6a" name="Uang Jalan Pending Approval" parent="menu_bar_t6" action="tl_tr_claimaccountability_action_forapproval"/>
+      <menuitem id="menu_item_tl_tr_workorder7" name="Pertanggungjawaban"   parent="menu_bar_t6" action="tl_tr_pertanggungjawaban_action"/>
+ 
+    <menuitem id="menu_bar_t7" name="Report" parent="menu_dashboard_tl"/> 
+      <!-- <menuitem id="menu_item_tl_tr_Report1" name="Uang Jalan"             parent="menu_bar_t7" action="uangjalan_report_action"/>   -->
+    <!-- <menuitem id="menu_item_tl_tr_Report1" name="Uang Jalan"             parent="menu_bar_t7" action="tl_wiz_uangjalanxlsx_action"/>   -->
+    <menuitem id="menu_item_tl_tr_Report1" name="Uang Jalan"             parent="menu_bar_t7" action="tl_wzd_uangjalanxlsx_action"/>  
+      <!-- <menuitem id="menu_item_tl_tr_Report2" name="Pertanggungjawaban"     parent="menu_bar_t7  " action="tl_tr_draftwo_action"/>   -->
+    <!-- <menuitem id="menu_item_tl_tr_workorder6a" name="ClaimAccountabilityapproval" parent="menu_bar_t6" action="tl_tr_claimaccountabilityapproval_action"/> -->
+    <!-- <menuitem id="menu_item_tl_tr_workorder5" name="account payment register approval" parent="menu_bar_t6" action="tl_tr_accpytregapproval_action"/> -->
+    <!-- <menuitem id="menu_item_tl_tr_workorder5" name="Invoice" parent="menu_bar_t6" action="tl_tr_invoice_action"/>   -->
+<!--<menuitem id="menu_item_tl_tr_workorder7" name="Payment Receive" parent="menu_bar_t6" action="tl_tr_paymentreceive_action"/> 
+    <menuitem id="menu_item_tl_tr_workorder8" name="Payment Allocation" parent="menu_bar_t6" action="tl_tr_paymentallocation_action"/>  -->
+
+    <!-- <menuitem id="menu_bar_t8"             name="Change def cust"     parent="menu_dashboard_tl"  sequence="999"      action="tl_ms_user_action_changebranch"/> -->
+  </data>
+</odoo>

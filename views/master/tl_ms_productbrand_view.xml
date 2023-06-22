@@ -1,0 +1,77 @@
+<odoo>
+    <data>    
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START PRODUCT BRAND%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course -->
+    
+        <record id="tl_ms_productbrand_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.productbrand.tree</field>
+            <field name="model">tl.ms.productbrand</field>
+            <field name="arch" type="xml">
+                <tree string="productbrand List"> 
+                    <field name="custinitial"/>
+                    <field name="catinitial"/> 
+                    <field name="category"/>
+                    <field name="manufacturer"/>    
+
+                </tree>
+            </field>
+        </record>  
+        <!-- Membuat View Form Course -->
+<!--         
+        <record id="tl_ms_productbrand_view_search" model="ir.ui.view">
+            <field name="name">tl.ms.productbrand.search</field>
+            <field name="model">tl.ms.productbrand</field>
+            <field name="arch" type="xml">
+                <search string="Search brand">
+                    <searchpanel> 
+                        <field name="category"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record> -->
+
+        <record id="tl_ms_productbrand_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.productbrand.form</field>
+            <field name="model">tl.ms.productbrand</field>
+            <field name="arch" type="xml">
+                <form string="productbrand Form">
+                    <sheet>
+                        <group  col="4" colspan="4">  
+                            <!-- <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/> ini kalo disable aftersave -->
+                            <field name="customerid" readonly="1" widget="selection"/> <!-- ini klo mau full readonly -->
+                            <field name="custinitial"/>
+                        </group> 
+                        <notebook>
+                            <page string="brand">
+                                <group  col="4" colspan="4">   
+                                    <field name="catinitial"/>
+                                    <field name="category"/>
+                                    <field name="manufacturer"/>   
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_productbrand_action" model="ir.actions.act_window">
+            <field name="name">productbrand</field>
+            <!-- <field name="domain">[('iscorrectcust', '=',  True)]</field> -->
+            <field name="res_model">tl.ms.productbrand</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data productbrand pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END PRODUCT BRAND %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  
+    
+        
+    </data>
+</odoo>

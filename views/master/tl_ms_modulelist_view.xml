@@ -1,0 +1,89 @@
+<odoo>
+    <data>  
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START MODULE LIST%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+        
+        <!-- Membuat View Tree/List Course -->
+        <record id="tl_ms_modulelist_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.modulelist.tree</field>
+            <field name="model">tl.ms.modulelist</field>
+            <field name="arch" type="xml">
+                <tree string=" List">
+                    <field name="moduletype" widget="selection"/>
+                    <field name="modulename"/>  
+                    <field name="attachment1" widget='image' width="36" height="36"/>
+                    <field name="attachment2" widget='image' width="36" height="36"/>
+                    <field name="attachment3" widget='image' width="36" height="36"/>
+                    <field name="attachment4" widget='image' width="36" height="36"/>
+                    <field name="attachment5" widget='image' width="36" height="36"/>
+                    <field name="filter" />
+                </tree>
+            </field>
+        </record>
+        
+        <!-- <record id="tl_ms_modulelist_view_search" model="ir.ui.view">
+            <field name="name">tl.ms.modulelist.search</field>
+            <field name="model">tl.ms.modulelist</field>
+            <field name="arch" type="xml">
+                <search string="Search modulelist">
+                    <field name="name" string="filter" filter_domain="['|', ('draftselectable', '=', True), ('iscorrectcust', '=', True)]"/> 
+                    <searchpanel> 
+                        <field name="type"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>   -->
+    <!-- Membuat View Form Course -->
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_modulelist_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.modulelist.form</field>
+            <field name="model">tl.ms.modulelist</field>
+            <field name="arch" type="xml">
+                <form string="modulelist Form"> 
+                    <!-- <header> 
+                        <button name='print_person' type='object' class='btn-primary' string='print'  /> 
+                    </header> -->
+                    <sheet>
+                        <group col="4" colspan="4">  
+                            <field name="moduletype"/>
+                            <field name="modulename"/>  
+                            <!--<field name="Leavedate"/>-->  
+                        </group> 
+                        <notebook>
+                            <page string="fullname">
+                                <group>
+                                    <div><field name="attachment1" filename="attachment1_name" /></div> 
+                                    <div><field name="attachment1_name" invisible="1"/></div> 
+                                    <div><field name="attachment2" filename="attachment2_name" /></div>
+                                    <div><field name="attachment2_name" invisible="1"/></div>
+                                    <div><field name="attachment3" filename="attachment3_name" /></div>
+                                    <div><field name="attachment3_name" invisible="1"/></div>
+                                    <div><field name="attachment4" filename="attachment4_name" /></div>
+                                    <div><field name="attachment4_name" invisible="1"/></div>
+                                    <div><field name="attachment5" filename="attachment5_name" /></div>
+                                    <div><field name="attachment5_name" invisible="1"/></div>
+                                    <field name="filter" />           
+                                </group>                                 
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_modulelist_action" model="ir.actions.act_window">
+            <field name="name">modulelist</field>
+            <field name="res_model">tl.ms.modulelist</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data Module List pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END MODULE LIST%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

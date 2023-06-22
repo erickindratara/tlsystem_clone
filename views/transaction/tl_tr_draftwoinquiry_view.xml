@@ -1,0 +1,52 @@
+<odoo>
+  <data>  
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START DRAFT WO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course -->
+<!--  
+    <record id="tl_tr_draftwoinquiry_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.draftwoinquiry.tree</field>
+        <field name="model">tl.tr.draftwoinquiry</field>
+        <field name="arch" type="xml">
+            <tree string="draftwo List">      
+                <field name="ref"/>     
+                <field name="brand"/>   
+                <field name="manfactureyear"/>
+                <field name="color"/>   
+                <field name="qi_locationfrom"/>  
+                <field name="qi_locationto"/> 
+                <field name="qi_salesprice"/> 
+                <field name="qi_cost"/>
+            </tree>  
+        </field> 
+    </record> -->
+       
+    <!-- <record id="product_normal_form_view1" model="ir.ui.view">
+            <field name="name">product.product.form1</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <tree string="draftwo List">      
+                    <field name="default_code"/>      
+                </tree>  
+            </field>
+    </record> -->
+    <!-- Membuat View Form Course -->
+     
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_draftwoinquiry_action" model="ir.actions.act_window">
+        <field name="name">draftwok</field>
+        <!-- <field name="domain">['&amp;', ('iscorrectcust', '=',  True), ('draftselectable', '=',  True)]</field> -->
+        <!-- <field name="domain">[('draftselectable', '=',  True)]</field> -->
+        <!-- <field name="domain">[('iscorrectcust','=',True),('draftselectable','=',True)]</field> -->
+        <field name="res_model">tl.tr.draftwo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Imput data draftwo pertamamu ...
+            </p>
+        </field>
+    </record>
+ 
+  </data>
+</odoo>

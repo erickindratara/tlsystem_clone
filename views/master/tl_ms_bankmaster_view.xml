@@ -1,0 +1,49 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START bankmaster%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course -->
+        <record id="tl_ms_bankmaster_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.bankmaster.tree</field>
+            <field name="model">tl.ms.bankmaster</field>
+            <field name="arch" type="xml">
+                <tree string="bankmaster List">
+                    <field name="bankid"/>
+                    <field name="bankname"/>
+                    <field name="isactive" widget="boolean_toggle"/> 
+                </tree>
+            </field>
+        </record>  
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_bankmaster_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.bankmaster.form</field>
+            <field name="model">tl.ms.bankmaster</field>
+            <field name="arch" type="xml">
+                <form string="bankmaster Form">
+                    <sheet>
+                        <group  col="4" colspan="4">  
+                            <field name="bankid"/>
+                            <field name="bankname"/>
+                            <field name="isactive"/> 
+                        </group>  
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_bankmaster_action" model="ir.actions.act_window">
+            <field name="name">bankmaster</field>
+            <field name="res_model">tl.ms.bankmaster</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data bankmaster pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END bankmaster%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+    </data>
+</odoo>

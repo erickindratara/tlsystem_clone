@@ -1,0 +1,38 @@
+<odoo>
+ 
+ 
+    <!-- Membuat View Form Wizard -->
+    <record id="tl_wzd_uangjalanxlsx_view_form" model="ir.ui.view"> 
+        <field name="name">tl.wzd.uangjalanxlsx.form</field>
+        <field name="model">tl.wzd.uangjalanxlsx</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Form">
+                <group>
+                    <field name="allkorlap" widget="boolean_toggle"/>
+                    <field name="korlap" attrs= "{'invisible': [('allkorlap', '=', True)]}"  />
+                    <field name="datefrom"/>
+                    <field name="dateto"/>  
+                    <field name="rowestimated" attrs="{'readonly': True }"/>  
+                </group>
+                <footer>
+                    <button name="action_print_excel_report" type="object" string="print"  class="oe_highlight"/>
+                    oraa
+                    <button string="Batal" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+ 
+    <!-- Membuat Action/Event Wizard -->  
+    <record id="tl_wzd_uangjalanxlsx_action" model="ir.actions.act_window">
+        <field name="name">Tambah apa apaan tuh</field>
+        <!-- <field name="res_model">uangjalan.report.wizard</field> -->
+        <field name="res_model">tl.wzd.uangjalanxlsx</field> 
+        <field name="view_mode">form</field>
+        <field name="target">new</field> 
+        <!-- <field name="binding_model_id" ref="tlsystem.model_tl_tr_draftwo"/> -->
+        <field name="binding_view_types">form</field>
+    </record>
+ 
+ 
+</odoo>   

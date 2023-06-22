@@ -1,0 +1,61 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START Customer%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course -->
+    
+        <record id="tl_ms_customer_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.customer.tree</field>
+            <field name="model">tl.ms.customer</field>
+            <field name="arch" type="xml">
+                <tree string="customer List">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="companyinitial"/>
+                    <field name="termofpayment"/> 
+                    <field name="PIC"/>   
+                    <field name="isactive"/>   
+                </tree>
+            </field>
+        </record>  
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_customer_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.customer.form</field>
+            <field name="model">tl.ms.customer</field>
+            <field name="arch" type="xml">
+                <form string="Customer Form">
+                    <sheet>
+                        <group  col="4" colspan="4"> 
+                            <field name="name"/>
+                        </group> 
+                        <notebook>
+                            <page string="fullname">
+                                <group  col="4" colspan="4">  
+                                    <field name="companyinitial"/>
+                                    <field name="termofpayment"/> 
+                                    <field name="PIC"/>   
+                                    <field name="isactive"/>  
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_customer_action" model="ir.actions.act_window">
+            <field name="name">customer</field>
+            <field name="res_model">tl.ms.customer</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data customer pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END Customer%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+    </data>
+</odoo>

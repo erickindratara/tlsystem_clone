@@ -1,0 +1,18 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->   
+    <record id="view_partner_property_iban_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']" position="after">  
+                    <field name="is_driver" widget="boolean_toggle" ></field> 
+            </xpath>
+        </field>
+    </record>   
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

@@ -1,0 +1,16 @@
+cd ../../etc/odoo-server.conf
+cd ../../var/log/odoo/odoo-server.log
+cd ../../opt/odoo/tunaslogistics-addons
+
+ /opt/odoo/odoo-server/addons
+ 
+tunaslogistic@tunaslogistic:/opt/odoo$ sudo git clone https://github.com/erickindratara/tlsystem.git /opt/odoo/tunaslogistics-addons/tlsystem
+
+tunaslogistic@tunaslogistic:/opt/odoo/others-addons$ sudo git clone https://github.com/erickindratara/odoo16add.git /opt/odoo/others-addons/ahmad
+ sudo git pull https://github.com/erickindratara/odoo16add.git jika mau pull, dan sudah posisi masuk ke folder /opt/odoo/others-addons/ahmad
+
+
+systemctl start tunaslogistics untuk start
+systemctl status tunaslogistics untuk cek status
+systemctl stop tunaslogistics untuk stop service
+systemctl restart tunaslogistics untuk restart service

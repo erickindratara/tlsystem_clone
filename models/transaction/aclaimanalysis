@@ -1,0 +1,83 @@
+=============================================================
+-fix table tl_tr_draftwomultitrip , sequence ada yang null impact perubahan.
+
+=============================================================
+customer , ada data mandatory utk bisa masuk ke 365
+
+claim: ada status uang sudah cair
+khusus SS/DHT buka PO, automatic SO. kirim ke ODOO ditampung di table baru. 
+baru di eksekusi ke dalam draftwo di sistem
+buat surat tugas di sistem, per driver
+bbm/toll/jasa pada saat pertanggungjawaban.
+dapet lemparan code customer dari 365
+jika claim < pertanggungjawaban. cancel 1 draftwo yang bermasalah.
+input ulang dengan nominal yang benar. approval dan kirim ke 365
+cancel. harus di jaga di odoo. ada approval.
+kalo udah pertanggung jawaban . ngga boleh di cancel.
+enhance logistic, maintain item didalam mobil box
+
+5 apr
+klo ss, yg trigger dynamic
+klo other, yg trigger app logistic
+quotation(tipe mobil, from, to, harga)
+api lookup quotation
+api lookup quotation detailnya.
+api customer.
+
+dibenerin draftwonya. pilih mereknya dipisah
+wo: jadi dibuatkan approval finance. finance 2 sistem
+
+===============================================================
+may:x
+fixing supaya pettycash bisa dipake
+tambah button decline
+training dari wcs, setting environment dan virtual machine 0.5
+training dari wcs, buat output menu item, simple report dan queries 0.5
+setting temporary table di SSRS
+
+may:
+buat model 
+==================
+hasil meeting 8 may 2023
+- bu desi minta closing pettycash. (TBM)
+- bu desi minta petty cash anaknya. di PSMART
+ 
+
+Jun:
+benerin visibility button
+res_partner tambahin pembeda lagi. driver untuk PT mana. pusing kan?
+SS WO, nomor DO dihilangkan
+pas quotation. pas pilih brand. informasi CITY SUV kurang 
+pas pilih brand di wo. somehow. ada kekacauan
+
+atik:
+multidrop masih masalah
+
+single drop. barang bongkar, n/a nya tidak ada.
+edit quotation lead to an error.
+
+next:
+dwo. matiin table multitrip. readonly [done]
+dwo. location drop 1 ditambah  done.
+dwo. quotation name. ditambah drop 1 done
+sales order. tambah drop poin 1
+dwo. Tipe Draft diganti, dia unlink multitrip done.
+rubah tl_tr_draftwo.qi_trip jadi singletrip
+
+
+atik. kalo pilih unit. otomatis ada nopolnya. done
+atik. sales order. tanggal wo, kenapa 2022 done
+atik. uang jalan. group by draftwo nggak usah di grup by tanggal. nyusahin. done
+atik uang jalan. dibuat dari dan ke.  done
+uang jalan automatic korlap. done
+atik. approval yang tidak berkepentingan di exclude aja wo nya.
+atik. approval ada informasi user yang berhak.
+atik. di apss. dibawah nama barang tambah no do
+atik. pertanggungjawaban hanya 1 dari 6 yang keluar. bug fix
+erick. pas pertanggungjawaban save. kenapa status gak berubah
+===============================================================
+lagi disini: <!-- <field name="domain">[('currentapprover_related', '=', True)]</field> -->
+
+DRAFT WO > WO
+workorder > SO
+ 

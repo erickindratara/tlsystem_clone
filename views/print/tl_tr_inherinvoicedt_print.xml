@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="erick_invoicedt_print" model="ir.actions.report">
+        <field name="name">Invoice DT</field>  
+        <field name="model">account.move</field>     
+        <field name="report_type">qweb-pdf</field>  
+        <field name="report_name">tlsystem.print_invoicedt_template</field>  
+        <field name="report_file">tlsystem.print_invoicedt_template</field>
+        <field name="print_report_name">(account_move.print_sumberdataaccountmove())</field>    
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>   
+    </record>  
+    <template id="print_invoicedt_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="data"> 
+<!-- <aspx start> -->
+                <style type="text/css"> 
+
+                    .tdunderline {
+                        border-bottom: 2pt solid black;    
+                    }    
+                    .text-center {
+                        text-align: center;
+                    } 
+                    .text-right {
+                        text-align: right;
+                    } 
+                    <!-- table, th, td { 
+                    padding: 1px;
+                    border-radius: 2px;
+                    background-color: white;
+                    } -->
+                    .tableluar { 
+                    padding: 0px;
+                    border-radius: 0px;
+                    background-color: white;   
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    }
+                    tr, th, td { 
+                    padding: 2px;
+                    border-radius: 2px;
+                    background-color: white;   
+                    border: 0px solid black;
+                    border-collapse: collapse;
+                    }
+                    .tableinside
+                    {
+                    border: 0px solid white;  
+                    }
+  
+                    .black
+                    { 
+                        background-color: red; 
+                    }
+                    .green
+                    { 
+                        background-color: green; 
+                    }
+                    .bold
+                    { 
+                        font-weight: bold;
+                    }
+                    .wid100
+                    {  
+                        width:100%; 
+                    } 
+                    .wid40 {width:40%;} 
+                    .wid60 {width:60%;}  
+                    .narrow
+                    { 
+                        <!-- font-family: "Arial Narrow", Calibri, serif; -->
+                        font-size: x-small;
+                    }
+                </style>  
+                <font style="font-family:Calibri">  
+                    <table class="wid100 tableluar" border="0">
+                        <h1 class="text-center"><span t-esc="headertitle"/></h1>
+                        <thead>
+                            <tr> 
+                                <th rowspan="2" >no</th> 
+                                <th rowspan="2" >merek</th> 
+                                <th rowspan="2" >type</th> 
+                                <th rowspan="2" >no rangka</th>  
+                                <th rowspan="2" >no mesin</th>   
+                                <th rowspan="2" >Tgl do</th> 
+                                <th rowspan="2" >tgl kirim</th>  
+                                <th colspan="2" >dari</th>  
+                                <th rowspan="2" >No DO</th> 
+                                <th rowspan="2" >Do  Billing</th> 
+                                <th rowspan="2" >Cost</th> 
+                                <th rowspan="2" >Sales Price</th>
+                            </tr>
+                            <tr> 
+                                <th >dari</th> 
+                                <th >ke</th> 
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <t t-set="counter" t-value="0"/>    
+                            <t t-foreach="invoiceline_obj" t-as="line">
+                                <t t-set="counter" t-value="counter + 1"/> 
+                                <tr>
+                                    <td><span t-esc="line_index + 1"/></td> 
+                                    <td class="text-center narrow"><span t-esc="line.get('brand')"/></td> 
+                                    <td class="text-center narrow"><span t-esc="line.get('type')"/></td> 
+                                    <td class="text-center narrow"><span t-esc="line.get('chassis')"/></td> 
+                                    <td class="text-center narrow"><span t-esc="line.get('engine')"/></td>  
+                                    <td class="text-center narrow"><span t-esc="line.get('dodate')"/></td>  
+                                    <td class="text-center narrow"><span t-esc="line.get('senddate')"/></td>  
+                                    <td class="text-center narrow"><span t-esc="line.get('from')"/></td>  
+                                    <td class="text-center narrow"><span t-esc="line.get('to')"/></td>  
+                                    <td class="text-center narrow"><span t-esc="line.get('nodo')"/></td>  
+                                    <td class="text-center narrow"><span t-esc="line.get('dobill')"/></td>  
+                                    <td class="text-right narrow"><span t-esc="line.get('cost')"/></td>  
+                                    <td class="text-right narrow"><span t-esc="line.get('salesprice')"/></td>  
+                                    <!-- <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.qi_brandcategory"/></td> 
+                                     <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.chassisno"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.engineno"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.engineno"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.engineno"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.qi_locationfrom"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.qi_locationto"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.engineno"/> </td> 
+                                    <td class="text-center"><span t-esc="line.tl_tr_draftwo_id.engineno"/> </td>   
+                                    <td class="text-right"><span t-esc="line.tl_tr_draftwo_id.qi_cost"/> </td> 
+                                    <td class="text-right"><span t-esc="line.tl_tr_draftwo_id.qi_salesprice"/> </td>  -->
+                                </tr>
+                            </t> 
+                        </tbody>  
+                        <tfoot >
+                            <tr> 
+                                <td colspan="12" class="bold text-center" >Grand Total</td>  
+                                <td class="bold text-right" ><span class="allfont" t-esc="sum_biayakirim"/></td> 
+                            </tr> 
+                        </tfoot>
+                    </table> 
+                    <table  class="wid100" border="0"> 
+                        <tfoot> 
+                            <tr > 
+                                <td rowspan="6" class="wid60" colspan="7" ></td> 
+                                <td colspan="6" class="wid40" > 
+                                    <table border="0" class="wid100 tableinside">
+                                        <tr><td>BIAYA PENGIRIMAN                </td><td>:</td><td class="text-right"><span class="allfont" t-esc="sum_biayakirim"/></td></tr>
+                                        <tr><td>DPP (DASAR PENGENAAN PAJAK)     </td><td>:</td><td class="text-right"><span class="allfont" t-esc="sum_dpp"/></td></tr>
+                                        <tr><td>PPN (10% * 11 % * DPP)          </td><td>:</td><td class="text-right"><span class="allfont" t-esc="sum_ppn"/>	</td></tr>
+                                        <tr><td>TOTAL INVOICE                   </td><td>:</td><td class="text-right"><span class="allfont" t-esc="sum_totalinvoice"/></td></tr>
+                                        <tr><td>PPH23 (2% * BIAYA PENGIRIMAN)   </td><td>:</td><td class="text-right"><span class="allfont" t-esc="sum_pph23"/></td></tr>
+                                        <tr><td>TOTAL INVOICE - PPH             </td><td>:</td><td class="text-right"><span class="allfont" t-esc="sum_totalinvoice_pph"/>	</td></tr>
+                                    </table>
+                                </td>   
+                            </tr>     
+                        </tfoot>
+                    </table> 
+                </font>  
+<!-- <aspx end> -->
+            </t>
+        </t>
+    </template>
+</odoo>

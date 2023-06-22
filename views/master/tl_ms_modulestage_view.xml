@@ -1,0 +1,79 @@
+<odoo>
+    <data>  
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START MODULE Stage%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+        
+        <!-- Membuat View Tree/List Course -->
+        <record id="tl_ms_modulestage_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.modulestage.tree</field>
+            <field name="model">tl.ms.modulestage</field>
+            <field name="arch" type="xml">
+                <tree string="Modue List">
+                    <field name="modulename" widget="selection"/>
+                    <field name="orders"/>  
+                    <field name="stage"/>  
+                    <field name="stagedesc"/>   
+                </tree>
+            </field>
+        </record> 
+        <record id="tl_ms_modulestage_view_search" model="ir.ui.view">
+            <field name="name">tl.ms.modulestage.search</field>
+            <field name="model">tl.ms.modulestage</field>
+            <field name="arch" type="xml">
+                <search string="Search modulestage">
+                    <!-- <field name="name" string="filter" filter_domain="['|', ('draftselectable', '=', True), ('iscorrectcust', '=', True)]"/>    -->
+                    <searchpanel> 
+                        <field name="modulename"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+    <!-- Membuat View Form Course -->
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_modulestage_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.modulestage.form</field>
+            <field name="model">tl.ms.modulestage</field>
+            <field name="arch" type="xml">
+                <form string="modulestage Form"> 
+                    <!-- <header> 
+                        <button name='print_person' type='object' class='btn-primary' string='print'  /> 
+                    </header> -->
+                    <sheet>
+                        <group col="4" colspan="4">   
+                            <field name="modulename"/>
+                            <field name="orders"/>  
+                            <field name="stage"/>  
+                            <field name="stagedesc"/>   
+                            <!--<field name="Leavedate"/>-->  
+                        </group> 
+                        <notebook>
+                            <page string="fullname">
+                                <group  col="4" colspan="4">
+                                    <!-- <field name="nickname"/>
+                                    <field name="Phone"/>
+                                    <field name="KTP"/>
+                                    <field name="SIM"/> -->
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_modulestage_action" model="ir.actions.act_window">
+            <field name="name">modulestage</field>
+            <field name="res_model">tl.ms.modulestage</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data Module stage pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END MODULE STAGE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

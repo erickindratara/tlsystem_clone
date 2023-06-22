@@ -1,0 +1,51 @@
+<odoo>
+  <data>   
+
+    <record id="tl_tr_claimaccountabilityapproval_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.claimaccountabilityapproval.tree</field>
+        <field name="model">tl.tr.claimaccountabilityapproval</field>  
+        <field name="arch" type="xml"> 
+            <tree string="claimaccountabilityapproval List">     
+                <field name="parent_id"/>  
+                <field name="sequence"/>       
+                <field name="userapproval"/>                       
+                <field name="approvallevel"/>   
+                <field name="approvaldate"/>      
+                <field name="approvalnote"/>      
+                <field name="claimid"/>               
+            </tree>  
+        </field> 
+    </record> 
+    <record id="tl_tr_claimaccountabilityapproval_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.claimaccountabilityapproval.form</field>
+        <field name="model">tl.tr.claimaccountabilityapproval</field>
+        <field name="arch" type="xml">
+            <form string="People Form"> 
+                <sheet>
+                    <group  col="4" colspan="4">    
+                        <field name="parent_id"/>  
+                        <field name="sequence"/>       
+                        <field name="userapproval"/>                       
+                        <field name="approvallevel"/>   
+                        <field name="approvaldate"/>      
+                        <field name="approvalnote"/>      
+                        <field name="claimid"/>                    
+                    </group>              
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+    <record id="tl_tr_claimaccountabilityapproval_action" model="ir.actions.act_window">
+        <field name="name">claimaccountabilityapproval</field> 
+        <field name="res_model">tl.tr.claimaccountabilityapproval</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data claimaccountabilityapproval pertamamu ...
+            </p>
+        </field>
+    </record>
+ 
+  </data>
+</odoo>

@@ -1,0 +1,93 @@
+<odoo>
+    <data>  
+        <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START PEOPLE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+        
+        <!-- Membuat View Tree/List Course -->
+        <record id="tl_tr_accpytregapproval_view_tree" model="ir.ui.view">
+            <field name="name">tl.tr.accpytregapproval.tree</field>
+            <field name="model">tl.tr.accpytregapproval</field>
+            <field name="arch" type="xml">
+                <tree string=" List">
+                    <field name="idapproval"/>
+                    <field name="journal_idx"/>
+                    <field name="amountx"/>
+                    <field name="partner_bank_idx"/>
+                    <field name="communicationx"/>  
+                    <field name="partner_typex"/>
+                    <field name="currency_idx"/>
+                    <field name="stage"/> 
+
+
+                </tree>
+            </field>
+        </record>
+        
+        <record id="tl_tr_accpytregapproval_view_search" model="ir.ui.view">
+            <field name="name">tl.tr.accpytregapproval.search</field>
+            <field name="model">tl.tr.accpytregapproval</field>
+            <field name="arch" type="xml">
+                <search string="Search people">
+                    <!-- <field name="name" string="filter" filter_domain="['|', ('draftselectable', '=', True), ('iscorrectcust', '=', True)]"/>  -->
+                    <searchpanel> 
+                        <field name="stage"  icon="fa-crosshairs" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+    <!-- Membuat View Form Course -->
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_tr_accpytregapproval_view_form" model="ir.ui.view">
+            <field name="name">tl.tr.accpytregapproval.form</field>
+            <field name="model">tl.tr.accpytregapproval</field>
+            <field name="arch" type="xml">
+                <form string="People Form"> 
+                    <!-- <header> 
+                        <button name='print_person' type='object' class='btn-primary' string='print'  /> 
+                    </header> -->
+                    <sheet>
+                        <group col="4" colspan="4">    
+                            <field name="idapproval" attrs="{'readonly': True}" />
+                            <field name="journal_idx" attrs="{'readonly': True}" />
+                            <field name="amountx" attrs="{'readonly': True}"/>
+                            <field name="partner_bank_idx" attrs="{'readonly': True}"/>
+                            <field name="communicationx" attrs="{'readonly': True}"/>  
+                            <field name="partner_typex" attrs="{'readonly': True}"/>
+                            <field name="currency_idx" attrs="{'readonly': True}"/>
+                            <field name="stage" attrs="{'readonly': True}"/> 
+                        </group> 
+                        <notebook>
+                            <page string="-">
+                                <group  col="4" colspan="4">
+                                    <field name="stage_userrequest" attrs="{'readonly': True}"/>
+                                    <field name="stage_requestdate" attrs="{'readonly': True}"/>
+                                    <field name="stage_userverify" attrs="{'readonly': True}"/>
+                                    <field name="stage_verifieddate" attrs="{'readonly': True}"/> 
+                                    <field name="stage_userapprove" attrs="{'readonly': True}"/>
+                                    <field name="stage_approveddate" attrs="{'readonly': True}"/> 
+                                    <field name="stage_declineddate" attrs="{'readonly': True}"/>
+                                    <field name="stage_userdecline" attrs="{'readonly': True}"/>  
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_tr_accpytregapproval_action" model="ir.actions.act_window">
+            <field name="name">People</field>
+            <field name="res_model">tl.tr.accpytregapproval</field> 
+            <field name="view_mode">tree,form</field>  
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data paymentregister approval pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END PEOPLE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    </data>
+</odoo>

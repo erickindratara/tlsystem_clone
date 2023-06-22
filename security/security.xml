@@ -1,0 +1,83 @@
+<odoo>  
+    <data>  
+    <record id="module_category_tlsystem" model="ir.module.category">
+        <field name="name">Tunas Logistic</field>
+    </record>
+    <!-- master start -->
+    <record id="group_tl_ms_read" model="res.groups">
+        <field name="name">TL Master Read</field>
+        <field name="category_id" ref="module_category_tlsystem"/> 
+    </record>
+
+    <record id="group_tl_ms_create" model="res.groups">
+        <field name="name">TL Master Create</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_ms_read'))]"/>
+    </record>
+
+    <record id="group_tl_ms_update" model="res.groups">
+        <field name="name">TL Master Update</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_ms_create'))]"/>
+    </record>
+ 
+    <record id="group_tl_ms_delete" model="res.groups">
+        <field name="name">TL Master Delete</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_ms_update'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record> 
+    <!-- master end -->
+    
+    <!-- change cust start -->
+    <record id="group_tl_cc_read" model="res.groups">
+        <field name="name">TL change Customer Read</field>
+        <field name="category_id" ref="module_category_tlsystem"/> 
+    </record>
+
+    <record id="group_tl_cc_create" model="res.groups">
+        <field name="name">TL change Customer Create</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_cc_read'))]"/>
+    </record>
+
+    <record id="group_tl_cc_update" model="res.groups">
+        <field name="name">TL change Customer Update</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_cc_create'))]"/>
+    </record>
+ 
+    <record id="group_tl_cc_delete" model="res.groups">
+        <field name="name">TL change Customer Delete</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_cc_update'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record> 
+    <!--  change cust end -->
+
+
+    <record id="group_tl_read" model="res.groups">
+        <field name="name">TL Read</field>
+        <field name="category_id" ref="module_category_tlsystem"/> 
+    </record>
+
+    <record id="group_tl_create" model="res.groups">
+        <field name="name">TL Create</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_read'))]"/>
+    </record>
+
+    <record id="group_tl_update" model="res.groups">
+        <field name="name">TL Update</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_create'))]"/>
+    </record>
+ 
+    <record id="group_tl_delete" model="res.groups">
+        <field name="name">TL Delete</field>
+        <field name="category_id" ref="module_category_tlsystem"/>
+        <field name="implied_ids" eval="[(4, ref('group_tl_update'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record> 
+    </data> 
+</odoo>

@@ -1,0 +1,96 @@
+﻿
+.btn2 {
+	text-align: center;
+  border: 0px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 14px;  
+  font-weight:bold;
+  text-shadow: 1px 1px black;
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand; 
+  width: 30px;  height: 20px;
+  margin: 0 auto; 
+	background-color: #d7dbec; 
+	background-repeat: no-repeat;
+	background-size: 100% 100%; 
+	padding:0;
+} 
+
+.btn2:focus
+{
+border: 2px solid #3498DB; 
+box-shadow: 1px 1px black; 
+	}
+ .btn15x30 {
+	text-align: center;
+  border: 0px solid transparent;
+  background: no-repeat;
+  color: #ffffff;
+  font-size: 14px;  
+  font-weight:bold;
+  text-shadow: 1px 1px black;
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand; 
+  height: 15px; width: 30px;  
+  margin: 0 auto; 
+	background-size: 100% 100%; 
+	padding:0;
+} 
+
+.btn15x30-up
+{	background-image: url('../../Images/elements/button/brightarrup.png');
+	}
+	
+.btn15x30-up:hover 
+{  
+	background-image: url('../../Images/elements/button/brightarruphover.png'); 
+}
+
+.btn15x30-down
+{	background-image: url('../../Images/elements/button/brightarrdown.png'); 
+	}
+	
+.btn15x30-down:hover 
+{  
+	background-image: url('../../Images/elements/button/brightarrdownhover.png'); 
+}
+.btn2-gray
+{	background-image: url('../../Images/elements/button/lightgray.gif');
+	}
+.btn2-gray:hover 
+{ 
+	background-image: url('../../Images/elements/button/lightgrayhover.gif'); 
+}
+
+
+.btn20x20 {
+	text-align: center;
+  border: 0px solid transparent;
+  background: no-repeat;
+  color: #ffffff;
+  font-size: 14px;  
+  font-weight:bold;
+  text-shadow: 1px 1px black;
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand; 
+  height: 20px; width: 20px;  
+  margin: 0 auto; 
+	background-size: 100% 100%; 
+	padding:0;
+} 
+.btn20x20-Expenses			{	background-image: url('../../Images/Expenses.png');			}
+.btn20x20-Expenses:hover	{	background-image: url('../../Images/ExpensesHover.png');	}
+.btn20x20-openApproval		{	background-image: url('../../Images/openApproval.png');		}
+.btn20x20-openApproval:hover{	background-image: url('../../Images/openApprovalHover.png');}
+.btn20x20-POST				{	background-image: url('../../Images/POST.png');				}
+.btn20x20-POST:hover		{	background-image: url('../../Images/POSTHover.png');		}
+.btn20x20-cancel			{	background-image: url('../../Images/Cancel.png');			}
+.btn20x20-cancel:hover		{	background-image: url('../../Images/Cancelhover.png');		}	
+.btn20x20-UNPOST			{	background-image: url('../../Images/UNPOST.png');			}
+.btn20x20-UNPOST:hover		{	background-image: url('../../Images/UNPOSTHover.png');		}
+.btn20x20-UnApprove			{	background-image: url('../../Images/undoapprove.png');		}
+.btn20x20-UnApprove:hover	{	background-image: url('../../Images/undoapproveHover.png');	}

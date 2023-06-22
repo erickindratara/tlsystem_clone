@@ -1,0 +1,267 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Latihan.aspx.cs" Inherits="Coba_Latihan" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <LINK href="../Include/CSS/<%=Session["Style"] %>.css" type="text/css" rel="stylesheet">
+    <script src="../Elsa.js" type="text/javascript"></script>
+    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        var AppInfo = '<%= Request.ServerVariables["PATH_INFO"]%>';
+        var App = AppInfo.substr(1, AppInfo.indexOf('/', 1) - 1)
+        var ServerName = 'http://<%=Request.ServerVariables["SERVER_NAME"]%>/';
+
+        function OpenPop(url) {
+            newwindow = window.open(url, 'popup', 'ontop = true,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no,width=700px,height=550');
+            if (window.focus) { newwindow.focus() }
+        }
+
+        function OpenWinCustomer(pTYPE, pID) {
+            window.open(ServerName + App + '/BusinessPartner/Customer' + pTYPE + 'DataView.aspx?ID=' + pID, 'Customer', 'left=250, top=100, width=800, height=600, menubar=0, scrollbars=yes');
+        }
+
+        function OpenWinRMOfferingView(pRevisionID) {
+            window.open(ServerName + App + '/Resource Management/Sales/Offering/RMOfferingTabViewMain.aspx?id=' + pRevisionID, 'OfferingRMView', 'left=250, top=100, width=800, height=600, menubar=0, scrollbars=yes');
+        }
+
+        function ConfirmDelete() {
+            if (window.confirm("Are you sure want to delete this record?"))
+                return true;
+            else
+                return false;
+        }
+    </script>
+    <script type="text/javascript">
+    function Confirm() {
+        var answer = confirm("Apakah anda yakin untuk Cancel PO ini ??");
+        return answer;
+    }
+    </script>
+    
+                    <style type="text/css"> 
+
+                        .tableouter { 
+                            width: 100%;
+                            min-height: 700px !important; 
+                        }
+                        .table1 {
+                            width: 90%;
+                            min-height: 500px !important; 
+                            /* width: 100%;
+                            background-color: red;
+                            font-size: 13px;
+                            font-family: Arial;
+                            border-collapse: collapse;
+                            border-bottom: 1px solid black;*/
+                        }
+                        .tableheader {
+                            width: 90%;
+                            text-align:right;
+                            min-height: 100px !important; 
+                            /*background-color: #666666;*/
+                        }
+                        .tablecontent1 {
+                            width: 90%;
+                            min-height: 100px !important; 
+                            /*background-color: #999999;*/
+                        }
+                        .tablecontent2 {
+                            width: 90%;
+                            min-height: 100px !important; 
+                            /*background-color: #666666;*/
+                        }
+                        .tablecontent3 {
+                            width: 90%;
+                            min-height: 20px !important; 
+                            /*background-color: red;*/
+                        }
+                        }
+                        .tableheadercontent {
+                            width: 100%;
+                            min-height: 120px !important;  
+                        }
+                        .tabletotalinv {
+                            width: 100%;
+                            min-height: 20px !important; 
+                        }
+                        .tablefooter {
+                            width: 90%;
+                            min-height: 20px !important; 
+                            /*background-color: #999999;*/
+                        }
+                        .aligntop{ 
+                            vertical-align:top;
+                            }
+                        .alignright{ 
+                            text-align:right;
+                            }
+                        .aligntopright{ 
+                            vertical-align:top;
+                            text-align:right;
+                            }
+                        .tdunderline {
+                            border-bottom: 2pt solid black;    
+                        }
+                        .allfont { 
+                            font-family:Calibri; 
+                            font-size: large;   
+                        }
+                        .allfont_XL { 
+                            font-family:Calibri; 
+                            font-size: x-large;   
+                        }
+                        .allfontsmall { 
+                            font-family:Calibri;   
+                        }
+                    </style>  
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="heighttall"> 
+                    <table class="tableouter aligntop">
+                        <tr>
+                            <td> 
+                                <table class="tablecontent1 tdunderline"  align="center">
+                                    <tr>
+                                        <td width="50%" class="aligntop">
+                                            <b>PT MITRA ANANTA MEGAH</b>
+
+                                        </td>
+                                        <td width="50%"> 
+
+                                            &nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" class="aligntop">
+                                            A</td>
+                                        <td width="50%"> 
+
+                                            B</td>
+                                    </tr>
+                                </table>
+                                <table class="tablecontent2"  align="center">
+                                    <tr>
+                                        <td width="30%" class="aligntop allfont">
+                                            BIAYA  PENGIRIMAN</td>
+                                        <td width="5%" class="aligntopright"><b></b></td>
+                                        <td  width="30%" class="aligntopright"></td>
+                                        <td width="5%" class="aligntopright allfont"><b>Rp.</b></td>
+                                        <td width="30%" class="aligntopright"><span class="allfont" t-esc="dpp"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop allfont">
+                                            BIAYA REIMBURSEMENT</td>
+                                        <td width="5%" class="aligntopright"><b></b></td>
+                                        <td  width="30%" class="aligntopright"></td>
+                                        <td width="5%" class="aligntopright allfont"><b>Rp.</b></td>
+                                        <td width="30%" class="tdunderline aligntopright allfont">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop">
+                                            <b class="allfont">SUB TOTAL</b></td>
+                                        <td width="5%" class="aligntopright"></td>
+                                        <td  width="30%" class="aligntopright"></td>
+                                        <td width="5%" class="aligntopright"><b class="allfont">Rp.</b></td>
+                                        <td width="30%" class="aligntopright"><b><span class="allfont" t-esc="dpp"/></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop"><font color="white">dummy</font>
+                                            </td>
+                                        <td width="5%" class="aligntopright"></td>
+                                        <td  width="30%" class="aligntopright"></td>
+                                        <td width="5%" class="aligntopright"></td>
+                                        <td width="30%" class="aligntopright"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop allfont">
+                                            DPP (DASAR PENGENAAN PAJAK)</td>
+                                        <td width="5%" class="aligntopright allfont"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright"><span class="allfont" t-esc="dpp"/></td>
+                                        <td width="5%" class="aligntopright"><b></b></td>
+                                        <td width="30%" class="aligntopright"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop allfont">
+                                            PPn (10% x 11% x DPP)</td>
+                                        <td width="5%" class="aligntopright"></td>
+                                        <td  width="30%" class="aligntopright"></td>
+                                        <td width="5%" class="aligntopright"><b class="allfont">Rp.</b></td>
+                                        <td width="30%" class="aligntopright"><span class="allfont" t-esc="ppn"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" class="aligntop allfont">
+                                            MATERAI</td>
+                                        <td width="5%" class="aligntopright"></td>
+                                        <td  width="30%" class="aligntopright"></td>
+                                        <td width="5%" class="aligntopright"><b class="allfont">Rp.</b></td>
+                                        <td width="30%" class="tdunderline aligntopright"><span class="allfont" t-esc="materai"/></td>
+                                    </tr>
+                                </table>
+                                <table class="tablefooter tdunderline" align="center">
+                                    <tr>
+                                        <td width="30%"> 
+                                            <b class="allfont">TOTAL</b>
+                                        </td>
+                                        <td width="5%"></td>
+                                        <td width="30%">
+                                            
+
+                                        </td>
+                                        <td width="5%" class="aligntopright allfont"><b>Rp.</b></td>
+                                        <td  width="30%" class="aligntopright"><b><span class="allfont" t-esc="ppndpp"/></b></td>
+                                    </tr>
+                                </table>
+                                <table class="tablefooter" align="center">
+                                    <tr>
+                                        <td width="30%" colspan="6"> 
+                                            <b class="allfont">Terbilang: <span  class="allfont" t-esc="terbilang"/></b>
+                                        </td> 
+                                    </tr>
+                                </table>
+                                <table width="100%" align="center" class="tablefooter">
+                                    <tr>
+                                        <td width="70%">  
+                                            <table width="100%">
+                                                <tr><td class="allfont"  width="100%">Please Transfer To:                                                    </td></tr>
+                                                <tr><td class="allfont"  width="100%"><b>BANK CENTRAL ASIA</b>                                               </td></tr>
+                                                <tr><td class="allfont"  width="100%"><b>MENARA IMPERIUM</b>                                                 </td></tr>
+                                                <tr><td class="allfont"  width="100%"><b>A/N: PT. MITRA ANANTA MEGAH</b>                                     </td></tr>
+                                                <tr><td class="allfont"  width="100%"><b>A/C: 2113040545</b>                                                 </td></tr>
+                                                <tr><td class="allfont"  width="100%">Jika sudah melaksanakan pembayaran harap bukti transfer di fax ke no.  </td></tr>
+                                                <tr><td class="allfont"  width="100%">(021)29401706 atau hubungi Nisfa (021) 29401707                        </td></tr>
+                                            </table>   
+                                        </td>
+                                        <td width="30%">
+                                            <table class="tableheadercontent" align="center">
+                                                <tr>
+                                                    <td align="center" class="allfont"  height="20px">
+                                                        Jakarta, <span class="allfont" t-esc="tanggal"/>
+                                                    </td>
+                                                </tr>
+                                                 <tr align="center" height="100px">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr align="center" height="20px">
+                                                    <td class="tdunderline allfont">
+                                                        Nisfa Yardian
+                                                    </td>
+                                                </tr>
+                                                <tr align="center" height="20px">
+                                                    <td>
+                                                        <b><span class="allfont" t-esc="title"/></b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table> 
+    </div>
+    </form>
+</body>
+</html>

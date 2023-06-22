@@ -1,0 +1,109 @@
+<odoo>
+    <data>  
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START PRODUCT BRAND CATEG0RY%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+    <!-- Membuat View Tree/List Course -->
+    
+        <record id="tl_ms_productbrandcategory_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.productbrandcategory.tree</field>
+            <field name="model">tl.ms.productbrandcategory</field>
+            <field name="arch" type="xml">
+                <tree string="productbrandcategory List"> 
+                    <field name="customerid"/>
+                    <field name="pbid"/> 
+                    <field name="custinitial"/>
+                    <field name="catinitial"/>
+                    <field name="category"/>
+                    <field name="catdesc"/>  
+                    <field name="iscorrectcust"/>  
+                </tree>
+            </field>
+        </record>  
+        <!-- Membuat View Form Course -->
+        
+        <record id="tl_ms_productbrandcategory_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.productbrandcategory.form</field>
+            <field name="model">tl.ms.productbrandcategory</field>
+            <field name="arch" type="xml">
+                <form string="productbrandcategory Form">
+                    <sheet>
+                        <group  col="4" colspan="4">   
+                                <!-- <field name="customerid" attrs="{'readonly': [('id', '!=', False)]}"  widget="selection"/> ini kalo disable aftersave -->
+                                <field name="customerid"  widget="selection"/> <!-- ini klo mau full readonly -->
+                                <!-- <field name="customerid" readonly="1" widget="selection"/>  -->
+                                <field name="custinitial"/>
+                                <field name="pbid"/>
+                        </group> 
+                        <notebook>
+                            <page string="brand category">
+                                <group  col="4" colspan="4">     
+                                    <field name="catinitial"/>
+                                    <field name="category"/>
+                                    <field name="catdesc"/>  
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <!-- Membuat Action/Event Course -->
+        <record id="tl_ms_productbrandcategory_action" model="ir.actions.act_window">
+            <field name="name">productbrandcategory</field> 
+            <field name="res_model">tl.ms.productbrandcategory</field>
+            <field name="view_mode">tree,form</field>  
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data productbrandcategory pertamamu ...
+                </p>
+            </field>
+        </record>
+            
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END PRODUCT BRAND CATEG0RY%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->  
+        <!-- <record id="tl_ms_productbrandcategory_view_tree" model="ir.ui.view">
+            <field name="name">tl.ms.productbrandcategory.tree</field>
+            <field name="model">tl.ms.productbrandcategory</field>
+            <field name="arch" type="xml">
+                <tree string="productbrandcategory List">
+                    <field name="customerid"/>
+                    <field name="category"/>
+                    <field name="catdesc"/>  
+                </tree>
+            </field>
+        </record>   
+        <record id="tl_ms_productbrandcategory_view_form" model="ir.ui.view">
+            <field name="name">tl.ms.productbrandcategory.form</field>
+            <field name="model">tl.ms.productbrandcategory</field>
+            <field name="arch" type="xml">
+                <form string="productbrandcategory Form">
+                    <sheet>
+                        <group  col="4" colspan="4"> 
+                                <field name="customerid"/>
+                        </group> 
+                        <notebook>
+                            <page string="brand category">
+                                <group  col="4" colspan="4">     
+                                    <field name="category"/>
+                                    <field name="catdesc"/>  
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+        <record id="tl_ms_productbrandcategory_action" model="ir.actions.act_window">
+            <field name="name">productbrandcategory</field>
+            <field name="res_model">tl.ms.productbrandcategory</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Imput data productbrandcategory pertamamu ...
+                </p>
+            </field>
+        </record>
+              -->
+        
+    </data>
+</odoo>

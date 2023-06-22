@@ -1,0 +1,74 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START invoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course --> 
+    <record id="tl_tr_invoice_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.invoice.tree</field>
+        <field name="model">tl.tr.invoice</field>
+        <field name="arch" type="xml">
+            <tree string="invoice List">
+                <!-- <xpath expr="//tree" position="attributes">
+                    <attribute name="banner_route">/account/account_invoice_onboarding</attribute>
+                </xpath> -->
+                <!-- <field name="id"/> -->
+                <field name="customerid"/>  
+                <field name="invoiceno"/>   
+                <field name="draftwono"/>    
+                <field name="stage"/>    
+                <button name="action_confirmsent" string="sent" confirm="yakin mau pencet tombol ini?" class="btn-primary" type="object"/>
+                <button name="action_confirmreceived" string="received" confirm="yakin mau pencet tombol ini?" class="btn-danger" type="object"/>
+            </tree>
+        </field> 
+    </record>   
+     
+    <!-- Membuat View Form Course -->
+    
+    <record id="tl_tr_invoice_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.invoice.form</field>
+        <field name="model">tl.tr.invoice</field>
+        <field name="type">form</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="invoice Form">
+                <header>
+                    <field name="stage" widget="statusbar"/>
+                    <button name='print_invoice' type='object' class='btn-primary' string='print'  /> 
+                </header> 
+                <sheet> 
+                    <group  col="4" colspan="4">    
+                        <field name="invoiceno"/>     
+                    </group> 
+                    <notebook>
+                        <page string="-">
+                            <group  col="4" colspan="4">     
+                                <div>    
+                                    <field name="draftwono" domain="[('iscorrectcust', '=',  True),('wono', '!=', False),('invoiceno', '=', False),('stage', '=', 'RDY')]"/>       
+                                </div>
+                                <!-- <field name="draftwono" domain="[('iscorrectcust', '=',  True),('wono', '=', True),('invoiceno', '=', False)]"/>        -->
+                            </group>  
+                        </page> 
+                    </notebook> 
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_invoice_action" model="ir.actions.act_window">
+        <field name="name">invoice</field>
+        <field name="domain">[('iscorrectcust', '=',  True)]</field>
+        <field name="res_model">tl.tr.invoice</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Imput data invoice pertamamu ...
+            </p>
+        </field>
+    </record>
+        
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END invoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

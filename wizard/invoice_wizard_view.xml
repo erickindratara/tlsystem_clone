@@ -1,0 +1,37 @@
+<odoo>
+ 
+ 
+    <!-- Membuat View Form Wizard -->
+ 
+    <record id="invoice_wizard_view_form" model="ir.ui.view">
+        <field name="name">invoice.wizard.form</field>
+        <field name="model">invoice.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Form">
+                <group>
+                    <field name="invoice_id"/>
+                    <field name="draftwo_ids"/> 
+    
+                </group>
+                <footer>
+                    <button name="tambah_peserta" type="object" string="Tambah" confirm="Apakah Anda Yakin Mau Menambah Peserta ?" class="oe_highlight"/>
+                    or
+                    <button string="Batal" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+ 
+    <!-- Membuat Action/Event Wizard -->
+ 
+    <record id="invoice_wizard_action" model="ir.actions.act_window">
+        <field name="name">Tambah Invoice</field>
+        <field name="res_model">invoice.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field> 
+        <field name="binding_model_id" ref="tlsystem.model_tl_tr_invoice"/>
+        <field name="binding_view_types">form</field>
+    </record>
+ 
+ 
+</odoo>   

@@ -1,0 +1,49 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->    
+        <!-- Inherit res.partner tree view -->
+        <record id="view_partner_tree_inherit" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">   
+                <xpath expr="//field[@name='user_id']"      attrs="{'invisible': [True]}"  position="replace"/> 
+                <xpath expr="//field[@name='activity_ids']" attrs="{'invisible': [True]}"  position="replace"/> 
+                <xpath expr="//field[@name='city']"         attrs="{'invisible': [True]}"  position="replace"/> 
+                <xpath expr="//field[@name='country_id']"   attrs="{'invisible': [True]}"  position="replace"/>    
+                <xpath expr="//field[@name='display_name']" position="before"> 
+                    <button name="cekdefaultfilter" string="dev: click to add default groupby" class="oe_highlight" type="object"/>
+                </xpath> 
+            </field>
+        </record> 
+
+    <record id="view_partner_property_iban_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before"> 
+                <field name="companyinitial" placeholder="initial" style="width: 80px" attrs="{'invisible': [('company_type', 'not in', ('company'))]}" ></field> 
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="before">  
+                <field name="PIC" attrs="{'invisible': [('company_type', '=', ('person'))]}" widget="selection" ></field>
+                <field name="is_logistic_customer"  ></field> 
+                <field name="is_driver"         attrs="{'invisible': [('company_type', '=', ('company'))]}"   ></field> 
+                <field name="driveralias"       attrs="{'invisible': [('company_type', '=', ('company'))]}" ></field> 
+                <field name="is_korlap"         attrs="{'invisible': [('company_type', '=', ('company'))]}"   ></field> 
+                <field name="drivertype"        attrs="{'invisible': ['|',('company_type', '=', ('company')),('is_driver', '=', (False))]}" widget="selection" ></field> 
+                <field name="korlap"            attrs="{'invisible': ['|',('company_type', '=', ('company')),('is_driver', '=', (False))]}" widget="selection" ></field>   
+                <field name="partnertype"       attrs="{'readonly': [True]}" widget="selection" ></field>   
+                <field name="drivercategory"    attrs="{'invisible': [('is_driver', '=', (False))]}" widget="selection" ></field>   
+                <button name="adjustpartnertype" string="get partner type" class="oe_highlight" type="object"/>
+                
+            </xpath>
+        </field>
+    </record>   
+ 
+     
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

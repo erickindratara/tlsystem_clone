@@ -1,0 +1,446 @@
+/*finderickbutton.css*/
+
+*:focus {
+	outline: none;
+} 
+.login {
+margin: 20px auto;
+width: 300px;
+}
+
+.login-screen {
+background-color: #FFF;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title 
+	{
+	text-align: center;
+	color: #777;
+	}
+.LoginDDL
+ {  
+	border-radius: 5px;  
+	height:40px;
+	width:95%;
+  	font-size:20px;
+  	color:#000000;
+  	background-color:#FFFFFF;
+  	border-style:solid;
+  	border-bottom: 1px solid #C1C1C1;
+  	border-right: 1px solid #C1C1C1;border-left: 1px solid #C1C1C1;border-top: 1px solid #C1C1C1;
+}
+.label
+ {font-family:verdana,Arial,tahoma,san-serif;
+  font-size:11px;
+  color:#000000;
+  background-color:#FFFFFF; 
+ }
+.login-form 
+	{
+	text-align: center;
+	}
+	
+.control-group 
+	{
+	margin-bottom: 10px;
+	}
+
+input 
+{
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;  
+transition: border .5s;
+}
+/*
+input:focus
+{
+border: 2px solid #3498DB; 
+box-shadow: 1px 1px black; 
+	}*/
+	
+	
+ .btn22x22 {
+	text-align: right;
+  border: 0px solid transparent;
+  background: no-repeat;
+  color: #ffffff;
+  font-size: 14px;  
+  font-weight:bold;
+  text-shadow: 1px 1px black;
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;	
+  transition: 0.25s;cursor: pointer; cursor: hand; 
+  height: 20px; width: 20px;  
+  margin: 0 auto; 
+	background-size: 100% 100%; 
+	padding:0;
+} 
+
+.btn22x22-maximize
+{	background-image: url('../../Images/elements/button/maximize.png');
+	}
+	
+.btn22x22-maximize:hover 
+{ 
+	height: 25px; width: 25px;   
+	background-image: url('../../Images/elements/button/maximizehover.png'); 
+}
+
+.btn22x22-search
+{	
+	background-image: url('../../Images/elements/button/ButtonSearch.png'); 
+}
+	
+.btn22x22-search:hover 
+{ 
+	height: 21px; width: 23px;  
+	background-image: url('../../Images/elements/button/ButtonSearchhover.png'); 
+}
+
+
+.btn {
+	text-align: center;
+  border: 0px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 14px;  
+  font-weight:bold;
+  text-shadow: 1px 1px black;
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand; 
+  width: 80px;  height: 20px;
+  margin: 0 auto; 
+	background-color: #d7dbec; 
+	background-repeat: no-repeat;
+	background-size: 100% 100%; 
+	padding:0;
+} 
+.btnColor {
+	text-align: center;
+  border: 0px solid transparent;  
+  text-shadow: 1px 1px black;
+  border-radius: 15px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand;    
+} 
+.btn:focus
+{
+border: 2px solid #3498DB; 
+box-shadow: 1px 1px black; 
+	}
+.btn-blue
+{	background-image: url('../../Images/elements/button/lightblue.gif');
+	}
+.btn-blue:hover 
+{ 
+	background-image: url('../../Images/elements/button/lightbluehover.gif'); 
+}
+.btn-green
+{	background-image: url('../../Images/elements/button/lightgreen.gif');
+	}
+.btn-green:hover 
+{ 
+	background-image: url('../../Images/elements/button/lightgreenhover.gif'); 
+}
+.btn-gray
+{	background-image: url('../../Images/elements/button/lightgray.gif');
+	}
+.btn-gray:hover 
+{ 
+	background-image: url('../../Images/elements/button/lightgrayhover.gif'); 
+}
+ 
+.btn-darkgreen
+{	background-image: url('../../Images/elements/button/darkgreen.gif');
+	}
+.btn-darkgreen:hover 
+{ 
+	background-image: url('../../Images/elements/button/darkgreenhover.gif'); 
+}
+
+.btn-darkblue
+{	
+	background-image: url('../../Images/elements/button/darkblue.gif');
+	}
+.btn-darkblue:hover 
+{ 
+	background-image: url('../../Images/elements/button/darkbluehover.gif'); 
+} 
+.btn-red
+{	
+	background-image: url('../../Images/elements/button/red.gif');
+	}
+.btn-red:hover 
+{ 
+	background-image: url('../../Images/elements/button/redhover.gif'); 
+} 
+.btn-black 
+{ 
+	background-image: url('../../Images/elements/button/black.png'); 
+} 
+.btn-black:hover
+{ 
+	background-image: url('../../Images/elements/button/blackhover.png'); 
+} 
+.btnGrid
+{	  
+	border: 0px solid transparent; 
+	color: #ffffff;
+	font-size: 10px;  
+	font-weight:bold;
+	text-shadow: 1px 1px black;
+	border-radius: 3px;
+	box-shadow: 1px 1px ,lightgray;
+	transition: 0.25s;cursor: pointer; cursor: hand; 
+	width: 55px;  height: 15px;
+	margin: 0 auto; 
+	background-repeat: no-repeat;
+	background-size: 100% 100%; 
+	padding:0;
+	background-color:-webkit-gradient( linear, left top, left bottom,color-stop(0.05, Transparent), color-stop(5, Transparent)); 
+	} 
+	
+.btnGrid-brightred
+{	
+	background-image: url('../../Images/elements/button/brightred.gif');
+}
+.btnGrid-brightred:hover
+{ 
+	background-image: url('../../Images/elements/button/brightredhover.gif'); 
+	cursor: pointer;  
+	font-size: 15px;  
+	width: 60px;  height: 16px;
+}
+.btnGrid-locked
+{	   
+	background-color: Transparent;
+	background-image: url('../../Images/LockedSmaller.png'); 
+	border-style:none;
+	background-size: 100% 100%; background-repeat: no-repeat;
+	width: 15px;  height: 15px;  
+	}
+	
+.btnGrid-locked:hover
+{ 
+	background-image: url('../../Images/Locked.png'); 
+	cursor: pointer;   
+	border-style:none;
+	background-color: transparent; 
+	width: 20px;  height: 20px; 
+	}
+	
+.btnGrid-sent
+{	   
+	background-color: Transparent;
+	background-image: url('../../Images/elements/button/SentGray.png'); 
+	border-style:none;
+	background-size: 100% 100%; background-repeat: no-repeat; 
+	}
+	
+.btnGrid-Shuttle
+{	   
+	background-color: Transparent;
+	background-image: url('../../Images/Shuttle.jpg'); 
+	border-style:none;
+	background-size: 100% 100%; background-repeat: no-repeat; 
+	}
+	
+.btnGrid-sent:hover
+{ 
+	background-image: url('../../Images/elements/button/Sent.png'); 
+	cursor: pointer;   
+	border-style:none;
+	background-color: transparent;  
+	}
+	
+
+.btnGrid-Edit
+{	   
+	background-color: Transparent;
+	background-image: url('../../Images/elements/button/Edit.png'); 
+	border-style:none;
+	background-size: 100% 100%; background-repeat: no-repeat; 
+	}
+	
+.btnGrid-Edit:hover
+{ 
+	background-image: url('../../Images/elements/button/Edithover.png'); 
+	cursor: pointer;   
+	border-style:none;
+	background-color: transparent;  
+	}
+	
+.btnGrid-delivered
+{	   
+	background-color: Transparent;
+	background-image: url('../../Images/elements/button/Sent.png'); 
+	border-style:none;
+	background-size: 100% 100%; background-repeat: no-repeat; 
+	}
+	
+.btnGrid-darkred
+{	background-image: url('../../Images/elements/button/darkred.gif');
+	}
+.btnGrid-darkred:hover
+{ 
+	background-image: url('../../Images/elements/button/darkredhover.gif'); 
+	cursor: pointer;  
+	font-size: 15px;  
+	width: 60px;  height: 16px;
+	}
+.btnGrid-lightblue
+{	background-image: url('../../Images/elements/button/lightblue.gif');
+	}
+.btnGrid-lightblue:hover
+{ 
+	background-image: url('../../Images/elements/button/lightbluehover.gif');  
+	font-size: 15px;  
+	cursor: pointer;  
+	width: 60px;  height: 16px;
+	}
+.btngridlong {
+	border: 0px solid transparent;
+	background: #3498DB;
+	color: #ffffff;
+	font-size: 10px;  
+	font-weight:bold;
+	text-shadow: 1px 1px black;
+	border-radius: 3px;
+	box-shadow: 1px 1px ,lightgray;
+	transition: 0.25s;cursor: pointer; cursor: hand; 
+	width: 55px;  height: 15px;
+	margin: 0 auto; 
+	background-color: #d7dbec; 
+	background-repeat: no-repeat;
+	background-size: 100% 100%; 
+	padding:0;
+} 
+
+.btngridlong-darkblue
+{	background-image: url('../../Images/elements/button/darkblue.gif');
+	}
+.btngridlong-darkblue:hover 
+{  
+	cursor: pointer;
+	background-image: url('../../Images/elements/button/darkbluehover.gif'); 
+	width: 60px;  height: 16px;
+}  
+
+	
+.imgGridToggle
+{	  
+  width: 20px;  height: 30px;  
+	cursor: pointer;  
+	background-color: transparent;
+	background-size: 100% 100%; background-repeat: no-repeat;
+	}
+	
+.imgGridToggle-Up {	background-image: url('../../Images/ArrowUp.png'); 	}
+.imgGridToggle-Up:hover {	 height: 31px; 	}
+.imgGridToggle-Down {	background-image: url('../../Images/ArrowDown.png');}
+.imgGridToggle-Down:hover {	  height: 31px; 	}
+
+.imgGridToggleLong
+{	  
+  width: 50px;  height: 10px;  
+	cursor: pointer;  
+	background-color: transparent;
+	background-size: 100% 100%; background-repeat: no-repeat;	
+	opacity: 0.9;
+	}
+	
+.imgGridToggleLong-Up {	background-image: url('../../Images/ArrowUp.png');	}
+.imgGridToggleLong-Up:hover {	 height: 12px; 	}
+.imgGridToggleLong-Down {	background-image: url('../../Images/ArrowDown.png');}
+.imgGridToggleLong-Down:hover {	  height: 12px; 	}
+.imgGrid
+{	  
+  width: 15px;  height: 15px;  
+	cursor: pointer;  
+	background-color: transparent;
+	background-size: 100% 100%; background-repeat: no-repeat;
+	}
+.imgGrid:hover
+{	  
+  height: 20px;   width:20px; 
+	}
+.login-link 
+{
+  font-size: 12px;
+  color: #444;
+  display: block;
+	margin-top: 12px;
+}
+
+
+ .btn22x60 {
+	text-align: center;
+  border: 0px solid transparent;
+  background: no-repeat;
+  color: #ffffff;
+  font-size: 14px;  
+  font-weight:bold;
+  text-shadow: 1px 1px black;
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand; 
+  height: 12px; width: 32px;  
+  margin: 0 auto; 
+	background-size: 100% 100%; 
+	padding:0;
+} 
+
+
+.btn22x60-up
+{	background-image: url('../../Images/elements/button/arrowup.png');
+	}
+	
+.btn22x60-up:hover 
+{ 
+	height: 18; width: 48px;  
+	background-image: url('../../Images/elements/button/arrowuphover.png'); 
+}
+
+.btn22x60-down
+{	background-image: url('../../Images/elements/button/arrowdown.png'); 
+	}
+	
+.btn22x60-down:hover 
+{ 
+	height: 18; width: 48px;
+	background-image: url('../../Images/elements/button/arrowdownhover.png'); 
+}
+
+ .btnInputText {
+	text-align: center;
+  border: 0px solid transparent;
+  background: no-repeat; 
+  font-size: 12px;   
+  border-radius: 3px;
+  box-shadow: 1px 1px ,lightgray;
+  transition: 0.25s;cursor: pointer; cursor: hand;  
+  margin: 0 auto; 
+	background-size: 100% 100%; 
+	padding:0;
+} 
+
+.btnInputText-Common 
+{   
+}
+.btnInputText-Common:hover 
+{   
+}
+.btnInputText-Mandatory 
+{  
+	background-image: url('../../Images/elements/textbox/brightred.png'); 
+}
+.btnInputText-Mandatory:hover 
+{  
+	background-image: url('../../Images/elements/textbox/brightredhover.png'); 
+}

@@ -1,0 +1,139 @@
+
+<odoo>
+  <data> 
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->  
+
+    <!-- <record id="view_move_tree" model="ir.ui.view">
+        <field name="name">account.out.invoice.tree.inherit</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml"> 
+            <xpath expr="//field[@name='payment_state']" position="after">  
+                    <button name='print_custominvoice' type='object' class='btn-primary' string='print'  />  
+            </xpath>   
+        </field>
+    </record>    -->
+    
+    <!-- <record id="view_in_invoice_tree" model="ir.ui.view">
+        <field name="name">account.out.invoice.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_state']" position="after">
+                    <button name='print_custominvoice' type='object' class='btn-primary' string='print'  />  
+            </xpath>
+ 
+        </field>
+    </record> -->
+
+
+
+    <record id="account_invoice_view_tree" model="ir.ui.view">
+        <field name="name">account.move.tree.inherit.sale</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <field name="payment_state" position="after">
+                <!-- <button name='print_custominvoice' type='object' class='btn-primary' string='print'  />   -->
+                <button name='print_sumberdataaccountmove' type='object' class='btn-primary' string='print'  />  
+                <button name='print_sumberdataaccountmovedt' type='object' class='btn-primary' string='print DT'  />  
+            </field>
+        </field>
+    </record>
+    
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"></field>
+        <field name="arch" type="xml"> 
+            
+                        
+            <xpath expr="//field[@name='partner_id']" position="replace">   
+                    <field name="mycompanyid" string="mycompanyid"   attrs="{'invisible': True}"></field>     
+                    <field name="partner_id" string="" widget='selection' domain="[ ('is_company', '=',  True),
+                                                                                    ('is_logistic_customer', '=',  True)]"></field>  
+                    <!-- <button name='print_custominvoice' type='object' class='btn-primary' string='print'  />   -->
+                    <!-- <field name="mycompanyid" string="mycompanyid"></field>   -->
+            </xpath>   
+             
+            <!-- header end -->
+            <!-- detail start -->
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="replace"  attrs="{'invisible': True}">  
+            </xpath>   
+ 
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">  
+                <field name="dwoid" attrs="{'readonly': True}" ></field> 
+                <field name="tl_tr_draftwo_id"></field> 
+            </xpath> <!--   
+            <xpath expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_line_control']" position="replace">   
+                <create name="add_line_control" string="click to add a line"  class='btn' /> 
+            </xpath>      -->
+ 
+            <xpath expr="//field[@name='line_ids']/tree/field[@name='account_id']" position="after">  
+                <field name="dwoid" invisible="1"></field> 
+                <field name="tl_tr_draftwo_id" invisible="1"></field> 
+            </xpath>  
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="replace"  attrs="{'invisible': True}">   
+            </xpath>     
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="replace"  attrs="{'invisible': False}">   
+            </xpath>
+            <!-- detail end -->
+        </field>
+    </record> 
+    <!-- ini kalo mau tambah menu disamping  print -->
+    <!-- <record id="action_update_invoice_date" model="ir.actions.server">
+       <field name="name">Update Invoice Date</field>
+       <field name="model_id" ref="account.model_account_move"/>
+       <field name="binding_model_id" ref="account.model_account_move"/>
+       <field name="state">code</field>
+       <field name="code">
+           action = records.action_update_invoice_date()
+       </field>
+   </record> -->
+  <!-- 
+    <record id="account_invoices_without_payment" model="ir.actions.report">
+        <field name="name">Invoices without saing saingke</field>
+        <field name="model">account.move</field>apus
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">print_custominvoice</field> apus
+        <field name="report_name">account.report_invoice</field> 
+        <field name="report_name">tlsystem.print_people_list</field> 
+        <field name="report_file">tlsystem.print_people_list</field> 
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field> 
+    </record>-->
+<!--     
+    <record id="account_invoices_without_payment0822" model="ir.actions.report">
+        <field name="name">Invoice Custom</field> 
+        <field name="model">tl.tr.invoice</field>     
+        <field name="report_type">qweb-pdf</field> 
+        <field name="report_type">qweb-html</field>   
+        <field name="report_name">tlsystem.print_invoice_list0822</field> 
+        <field name="report_file">tlsystem.print_invoice_list0822</field>  
+        <field name="report_name">tlsystem.print_invoice_list0822</field> 
+        <field name="report_file">tlsystem.print_invoice_list0822</field>  
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field> 
+    </record> -->
+
+
+
+    <record id="account_move_action_invoice" model="ir.actions.act_window">
+        <field name="name">Invoice Tunas Logistic</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="context">{'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': True, 'default_customer_rank': 1}</field> -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Create a new customer in your address book
+            </p><p>
+            Odoo helps you easily track all activities related to a customer.
+            </p>
+        </field>
+    </record>   
+  <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END inherinvoice %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+  </data>
+</odoo>

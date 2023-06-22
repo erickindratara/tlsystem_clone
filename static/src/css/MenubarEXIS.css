@@ -1,0 +1,104 @@
+﻿.body
+{ 
+	background-image: url('../../Images/elements/menubarback.png'); 
+	}
+	.trans
+	{
+		background-color:Transparent;
+		}
+.TreeBg
+{font-family: Calibri; 
+	padding:0px; 
+	background-image: url('../../Images/elements/menubarbg.png'); 
+	Width:95%; 
+	padding-top:10px;
+	padding-bottom:10px;
+	border-radius: 16px;    
+	opacity: 0.95;
+	background-repeat: repeat;
+	
+	/*
+	background-color: #E3FBFD; 
+	background-repeat: repeat; 
+	opacity: 0.85; */
+}
+.HoverNodeStyle
+{   
+    width:100%;
+	border-radius: 10px;  
+    padding-left:5px; 
+	font-weight: bold;  
+	font-size:x-large; 
+	height:25px; 
+	
+}
+
+.SelectedNodeStyle 
+{    
+	/*background-image: url('../../Images/elements/tdGanjil.gif');
+    width:75%;
+	border-radius: 4px;  
+	padding:2px;  
+	background-repeat: no-repeat;
+	background-size: 100% 100%; 
+	font-weight: bold; 
+	font-size:xx-large;   */
+                                         
+}
+.RootNodeStyle 
+{   
+	border-radius: 4px; 
+    padding-left:11px;
+    padding-right:11px;
+    font-weight:bold;
+    font-size:x-large;  
+    color:white;
+    text-decoration:none; 
+	/*padding:2;
+	background-color: Black; 
+    width:85%;*/
+} 
+
+.ParentNodeStyle
+{ 
+	background-image: url('../../Images/elements/ParentNodeStyle.gif'); 
+	border-radius: 4px; 
+    /*width:175px; */
+    width:90%; 
+    padding-left:5px;
+    color:#333333;
+	font-size:medium; 
+	/*background-color: #6f7ea6;
+	font-weight: bold;
+	border-radius: 4px;  
+	padding:2px; 
+	font-weight:bold;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;*/
+	}
+.LeafNodeStyle 
+{   
+	
+	background-image: url('../../Images/elements/NodeStyle.gif'); 
+	border-radius: 4px; 
+    width:80%; 
+    /*width:180px;  */
+    padding-left:5px;
+    color:#333333;
+	font-size:small;
+	/*border-radius: 4px;  
+    width:80%;
+	color:#000033 ;
+    padding:3px;
+    border-spacing:1px; */
+                                        
+}
+.button
+{
+	background-color: #FFFFFF; 
+	background-image: url('../../Images/elements/tdganjil.gif');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border-radius: 4px;   
+	padding:1;
+	}

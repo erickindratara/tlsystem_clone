@@ -1,0 +1,139 @@
+<odoo>
+  <data>  
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%START PAYMENT allocation%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
+<!-- Membuat View Tree/List Course -->
+ 
+    <record id="tl_tr_payment_allocation_view_tree" model="ir.ui.view">
+        <field name="name">tl.tr.paymentallocation.tree</field>
+        <field name="model">tl.tr.paymentallocation</field>
+        <field name="arch" type="xml">
+            <tree string="paymentallocation List">    
+                <field name="wayofpayment"/>        
+                <field name="bonmerahID"/>         
+                <field name="allocationID"/>   
+                <field name="additionalreferenceno"/>        
+                <field name="source"/>        
+                <field name="valuedate" />   
+                <field name="amountreceive"/>    
+                <field name="amountleft"/>    
+                <field name="description"/>      
+            </tree>  
+        </field> 
+    </record>
+       
+    <record id="tl_tr_paymentallocation_view_search" model="ir.ui.view">
+        <field name="name">tl.tr.paymentallocation.search</field>
+        <field name="model">tl.tr.paymentallocation</field>
+        <field name="arch" type="xml">
+            <search string="Search paymentallocation">
+                <!-- <field name="name" string="filter" filter_domain="['|', ('draftselectable', '=', True), ('iscorrectcust', '=', True)]"/>   -->
+                <searchpanel> 
+                    <field name="stage" icon="fa-crosshairs" widget="selection"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- Membuat View Form Course -->
+    
+    <record id="tl_tr_paymentallocation_view_form" model="ir.ui.view">
+        <field name="name">tl.tr.paymentallocation.form</field>
+        <field name="model">tl.tr.paymentallocation</field>
+        <field name="arch" type="xml">
+            <form string="People Form">
+                <header>
+                    <field name="stage" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group  col="4">    
+                        <field name="allocationID" widget="CopyClipboardChar"/>   
+                        <field name="customerid" readonly="1" widget="selection"/>   
+                    </group>  
+                    <notebook>
+                    
+                        <page string="main page">
+                            <group  col="6" colspan="6">   <!-- group debug-->       
+                                <field name="paymentreceive"/>      
+                                <field name="valuedate" />   
+                                <field name="wayofpayment"/>        
+                                <field name="bankaccount"/>          
+                                <field name="additionalreferenceno"/>
+                                <field name="source"/>        
+                                <field name="amountreceive"/>
+                                <field name="amountleft"/>    
+                                <field name="description"/>   
+                            </group>     
+                        </page>
+                        <page string="bank info">
+                            <group  col="6" colspan="6">   <!-- group debug-->       
+                                <field name="bankaccount"/>        
+                                <field name="bankaccountno"/>   
+                                <field name="bankbranch"/>   
+                                <field name="accountname"/>   
+                                <field name="accountcode"/>      
+                            </group>     
+                        </page>
+                        <page string="draftwo">
+                            <group  col="4" colspan="4">   
+                                <field name="draftwo"/>  
+                                <field name="dwo_senddate"/>
+                                <field name="dwo_qi_locationfrom"/> 
+                                <field name="dwo_qi_locationto"/>
+                                <field name="dwo_qi_salesprice"/> 
+                            </group>        
+                        </page>  
+                        <page string="invoice">
+                            <group  col="4" colspan="4">  
+                                <field name="dwo_invoiceno"/>  
+                            </group>        
+                        </page>  
+                        <page string="unit">   <!--  gatau kenapa tapi hidden  -->
+                            <group  col="4">      
+                                <field name="dwo_engineno"/> 
+                                <field name="dwo_agreement"/>
+                                <field name="dwo_manfactureyear"/>
+                                <field name="dwo_color"/> 
+                                <field name="dwo_qi_brand"/> 
+                            </group>   
+                        </page>
+                        <page string="quotation">   <!--  gatau kenapa tapi hidden  -->
+                            <group  col="4">      
+                            </group>  
+                            <group   col="4" colspan="4"> 
+                            </group>
+                        </page>
+                        <page string="driver">   <!--  gatau kenapa tapi hidden  -->
+                            <group  col="4">      
+                                <field name="dwo_driverid"/>  
+                            </group>   
+                        </page>
+                    </notebook> 
+
+                    <group  col="4" colspan="4">     
+                            <!--  
+                            <field name="dwo_wono"/>
+                            <field name="dwo_quotationitem"/> 
+                             -->
+                    </group> 
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Membuat Action/Event Course -->
+    <record id="tl_tr_paymentallocation_action" model="ir.actions.act_window">
+        <field name="name">paymentallocation</field>
+        <!-- <field name="domain">['&amp;', ('iscorrectcust', '=',  True), ('draftselectable', '=',  True)]</field> -->
+        <!-- <field name="domain">[('draftselectable', '!=',  False)]</field> -->
+        <!-- <field name="domain">[('iscorrectcust','=',True),('draftselectable','=',True)]</field> -->
+        <field name="res_model">tl.tr.paymentallocation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p name="o_view_nocontent_smiling_face">
+                Input data paymentallocation pertamamu ...
+            </p>
+        </field>
+    </record> 
+  </data>
+</odoo>
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END PAYMENT allocation%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--> 
